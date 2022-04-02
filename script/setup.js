@@ -26,6 +26,9 @@ const step = () => {
     if(Game.state === "menu"){
         drawMenu();
     }
+    else if(Game.state === "game"){
+        drawGame();
+    }
 
     requestAnimationFrame(step);
 }
