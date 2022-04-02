@@ -38,6 +38,8 @@ const mouseClick = (event) => {
     let yCoord = event.clientY - gameCanvas.canvas.offsetTop + OFFSET_Y;
     if (Game.state === "menu") {
         menuMouseClick(xCoord, yCoord);
+    } else if (Game.state === "game"){
+        gameMouseClick(xCoord, yCoord);
     }
 };
 
