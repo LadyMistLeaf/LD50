@@ -1,0 +1,140 @@
+** -- Ideas begin further down -- **
+
+**What is inevitable?**
+
+--
+
+https://www.sheownssuccess.com/life/inevitable-things/
+
+Change will happen 
+Things will come to an end.
+You'll have disagreements and even conflict.
+You will fail.
+Life will challenge you.
+People will surprise you.
+You'll experience fear.
+You'll make mistakes.
+You’ll miss an opportunity.
+Time will pass quicker than you think.
+Getting old will happen.
+Death will come.
+You’ll regret taking something for granted.
+
+--
+
+https://www.quora.com/Are-there-things-that-are-really-inevitable
+
+after every birth there will be a death
+after every dark night there will be a shiny day
+after every sorrow there will be a joy
+
+Hunger- Most inevitable thing. It's both a basic human requirement and something highly fulfilling.
+
+Feelings- They’re the pre existing condition for being Human.
+
+Attachments- Come with the presence of other humans, tangible and non-tangible, materialistic and non-materialistic things.
+
+Fear- Instilled by experiences of self or influenced by experiences of others.
+
+Failure- Comes with trying. Even trying to walk after birth sees failures.
+
+Dreams- Come with REM sleep.
+
+Death- Comes with life.
+
+piracy
+plagiarism
+parody
+misconception
+idolization
+sycophancy
+resentment
+
+--
+
+Idle brainstorm:
+
+Illness
+
+Bad Politicians
+
+Climate Change
+
+Cleanliness: Things always get dirty/dusty
+
+Evolution: One must evolve to survive or become extinct
+
+Contract: once signed, it's outcome is inevitable
+
+Star-crossed lovers (Binding): No matter how many times they reincarnate, they always meet up
+
+Dog wanting to play: Inevitable.  Literally, she bugged me to play most of the time I was brainstorming.
+
+Bugs in code
+
+Thanos cameo?
+
+
+** -- Game Ideas -- **
+
+Concept: Death
+
+You are being chased by the grim reaper and you have to dodge him.  Top down arcade style where you move with WASD (I forget your key combination, remind me)  Score is awarded based on how long you stay alive.  Perhaps after a certain time, more reapers join in to eventually make it inevitable?
+
+Concept: Fate/Destiny
+
+As you try to change the end result, it is inevitable how much you try, or may result in even less desirable endings. 
+Trying to avoid death, a loveless marriage, an event from happening, etc.
+This could be a simple text adventure where you start out knowing the "outcome" is (time travel/premonition) and you get different endings based on the path taken.
+	
+Concept: Hunger
+
+You pretty much turn into the Hulk when you're hangry.  Thus, you need to forage/search for food, and the longer you take to find food, the more hangry you get, with some consequences.
+
+Setting: Wedding Reception - 
+	You're a kid who throws a tantrum when hungry, but the food hasn't been served yet, only a few appetizers.  You start out cranky, but as you get hangrier, you start to affect things you touch (banging your fist on tables to flipping tables, etc).  End goal is to last until the food is served without throwing a tantrum by finding uneaten appetizers.
+	
+Setting: Wilderness - 
+	You're a beastman/creature who can hunt just fine, but as you get more hungry, you make more noise (growling, snarling, not paying attention to your surroundings so you step on twigs, etc), which makes it harder to hunt prey.  Berries provide small relief, but animals will keep you full longer.  Goal is to not go berzerk from hunger.
+
+Concept: Imminent
+
+Meteor rushes to Earth, you need to evacuate as there is no way to stop the meteor.
+
+How to manage a shelter in the event of an emergency.  See: Fallout Shelter
+
+Concept: Illness
+
+You catch a cold and must stop it from becoming pneumonia.  You are a white cell within the body battling the virus.  Top-down style game like Zelda where you wield a weapon to hit enemies.  Once all viruses within the body are killed, the person is well and the game ends.  As the white cell sits down to rest in the ending, they are notified that another virus has entered the body.  Illness is, after all, inevitable. 
+
+Concept: Bad Politicians
+
+1 - You are a voter who gets to vote who is president/chancellor.  For purposes of the game, it's an all-around tie, and yours is the tie breaker.  They announce their campaign promises, and you have to determine (using reddit-like sites) which promises, therefore which politician, may sound like he has the best interest of the country in mind, but is actually corrupt (We will save money by lowering governmental healthcare costs!  ...And therefore, their quality), and which is the best to vote for.  
+
+2 - You are a reporter who gets to interview candidates for president/chancellor.  Based on the questions you ask, you may uncover who is corrupt and who is not, and successfully expose the most corrupt politician.  Questions lead to clues, clues lead to small bits of evidence which could merit a more formal investigation, and escalate into getting the law involve.  Pursue the wrong one, and you lose the game as you get jailed for harassing a candidate with baseless claims.  (this is where a politician with purple skin and a wide chin would be a funny cameo)
+
+Concept: Nighttime
+
+You are an injured animal.  If you can survive the night, you will be fine, but to survive the night while injured, is to move slowly while nocturnal predators try to find you before daybreak.  Different predators may search via different means (Smell, sound, movement, etc)
+
+Concept: Contract
+
+Once a contract is signed, it cannot be broken until it is fulfilled.  
+
+1 - While drunk, you have signed a contract with a Demon, and cannot get out of it.  Perhaps...  The contract is not so clear cut?  Example: You need to take 10 lives!  ...Do they need to be human?  Go hunting for food and take animal lives instead.
+
+2 - Your employer is using your work contract against you!  Can you turn the tables on them with their own contract?
+
+Concept: Cleanliness
+
+1 - You work as a janitor trying to keep a workplace clean.  Could do a "Among Us" style game where you have so much time to clean, move with top-down movement with a mop/vacuum, but have to do short minigames to clean various things within that timeframe as well.
+
+2 - You work as a window washer on the side of a skyscraper, and you have x amount of time to clean x number of windows.  Not sure what kind of gameplay this would bring though...
+
+Concept: Bugs in code / Pets
+
+You work from home and have a day to find and fix the bugs in the code, but you have a pet who always, ALWAYS wants attention.  If you pay too much attention to the pet, it will take up too much time and you won't be able to fix all the bugs.  If you don't pay enough attention, the pet will eventually jump in your lap and prevent you from doing any work at all.  Fine line here to have both done successfully.  Fixing code could be a game on it;s own where you have to find faulty code based on intructions (basic if/for/while loop instructions) and click on the "computer screen" to fix that chunk of code.
+
+Concept: Passing of Time
+
+You are a squirrel that must stockpile enough food to last the winter.  Top-down game where the squirrel forages for things, and searching bushes/trees may yield a number of results, like finding discarded nuts or an angry animal that was peacefully napping.  End goal is a result of how much food was stockpiled before winter arrives, with multiple endings.
