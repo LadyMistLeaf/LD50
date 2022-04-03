@@ -22,6 +22,7 @@ sprites.addImage("spider_death_3", "./assets/images/spider_death_x740_y000_anim_
 sprites.addImage("spider_death_4", "./assets/images/spider_death_x740_y000_anim_4.png");
 sprites.addImage("spider_death_5", "./assets/images/spider_death_x740_y000_anim_5.png");
 sprites.addImage("scroll", "./assets/images/scroll.png");
+sprites.addImage("ghost", "./assets/images/ghost.png");
 
 // Temp images
 sprites.addImage("blurb1", "./assets/images/blurb1.png");

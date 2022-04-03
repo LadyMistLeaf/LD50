@@ -25,9 +25,6 @@ drawGame = () => {
     gameCanvas.drawImage(sprites.scroll, SCREEN_RIGHT, SCREEN_TOP + scrollY);
     gameCanvas.drawImage(sprites.main_bg, 0, 0);
 
-    interactables.forEach((item) => {
-        gameCanvas.drawImage(sprites[item.image], item.x, item.y);
-    })
     gameCanvas.drawImage(sprites[interactables[0].image], interactables[0].x, interactables[0].y);
     gameCanvas.drawImage(sprites[plantImage], 770, 300);
     
@@ -137,7 +134,7 @@ createInteractables = () => {
             action: function(){
                 if(mouseAction === null){
                     if(plantImage === "plant_2"){
-                        this.image = "plant_1";
+                        this.image = "ghost";
                         mouseImage = "watering_can_2";
                         mouseAction = "watering";
                     }
