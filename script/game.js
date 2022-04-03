@@ -67,6 +67,13 @@ gameMouseClick = (xCoord, yCoord) => {
             mouseScroll = true;
         }
     }
+    else if(mouseAction === "watering"){
+        if(xCoord >= 770 && xCoord <= 890){
+            if(yCoord >= 225 && yCoord <= 325){
+                startWatering();
+            }
+        }
+    }
     else {
         console.log(xCoord, yCoord);
         let selected = null;
@@ -102,7 +109,9 @@ gameMouseMove = (x, y) => {
         }
     }
     else if (mouseAction){
-
+        if(mouseAction === "wateringPlant"){
+            return;
+        }
     }
     else {
         let selected
@@ -138,6 +147,7 @@ createInteractables = () => {
                         this.image = "ghost";
                         mouseImage = "watering_can_2";
                         mouseAction = "watering";
+                        sounds.wateringcan_pickup.play();
                     }
                 }
             }
@@ -282,4 +292,17 @@ removeEvent = (removedEvent) => {
             console.log(events);
         }
     });
+}
+
+startWatering = () => {
+    clearTimeout(plantTimeout);
+    mouseAction = "wateringPlant";
+    sounds.plant_watered.play();
+    setTimeout(() => {
+        mouseAction = null;
+        mouseImage = "mouse_pointer";
+        plantImage = "plant_1";
+        interactables[0].image = "watering_can_1";
+    }, 1000);
+
 }
