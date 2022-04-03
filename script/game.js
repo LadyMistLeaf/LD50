@@ -2,6 +2,11 @@ let codeLocation = 0;
 let scrollY = 0;
 let mouseScroll = false;
 
+// Mouse Location is where the pointer will show, as some actions will cause the pointer to stay still
+let mouseLocationX = mouseX;
+let mouseLocationY = mouseY;
+
+
 startGame = () => { //reInitializing all values so replayability is possible
     Game.state = "game";
     // Making a copy of the screen data so the original stays intact for replayability
@@ -21,6 +26,10 @@ drawGame = () => {
     gameCanvas.drawImage(sprites.scroll, SCREEN_RIGHT, SCREEN_TOP + scrollY);
     gameCanvas.drawImage(sprites.main_bg, 0, 0);
 
+    gameCanvas.drawImage(sprites.watering_can_1, 840, 340);
+    gameCanvas.drawImage(sprites.plant_1, 770, 350);
+
+    gameCanvas.drawImage(sprites[mouseImage], mouseLocationX - CURSOR_OFFSET_X, mouseLocationY - CURSOR_OFFSET_Y);
 }
 
 gameMouseClick = (xCoord, yCoord) => {
@@ -55,7 +64,7 @@ gameMouseUp = () => {
     }
 }
 
-gameMouseMove = () => {
+gameMouseMove = (x, y) => {
     if(mouseScroll){
         if(mouseY >= SCREEN_TOP && mouseY <= SCREEN_BOTTOM - SCROLL_HEIGHT){
             scrollY = Math.round(mouseY - SCREEN_TOP);
@@ -67,4 +76,6 @@ gameMouseMove = () => {
             scrollY = SCREEN_BOTTOM - SCROLL_HEIGHT - SCREEN_TOP;
         }
     }
+    mouseLocationX = x;
+    mouseLocationY = y;
 }
