@@ -11,11 +11,11 @@ Interactable Objects
 
 
 ---- AUDIO ----
-[ ] Typing sound when fixing errors
-[ ] Plant wilts
-[ ] Plant dies
-[ ] Picking up watering can
-[ ] Watering plant + can resets
+[x] Typing sound when fixing errors
+[x] Plant wilts
+[x] Plant dies
+[x] Picking up watering can
+[x] Watering plant + can resets
 [ ] MUSIC - Ingame loop
 
 
