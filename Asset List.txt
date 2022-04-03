@@ -1,13 +1,14 @@
 ---- VISUAL ---
 Code
+[X] Test snippets of ingame code 
 [ ] Actual snippets of ingame code 
 
 Interactable Objects
-[ ] Watering can
-[ ] Watering can tilted
-[ ] Plant - healthy
-[ ] Plant - wilted
-[ ] Plant - dead
+[X] Watering can
+[X] Watering can tilted
+[X] Plant - healthy
+[X] Plant - wilted
+[X] Plant - dead
 
 
 ---- AUDIO ----
