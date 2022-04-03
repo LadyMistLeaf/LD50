@@ -68,7 +68,7 @@ gameMouseClick = (xCoord, yCoord) => {
         }
     }
     else {
-        console.log("clicked outside of screen")
+        console.log(xCoord, yCoord);
         let selected = null;
         interactables.forEach((element) => {
             if(xCoord >= element.x && xCoord <= element.x + element.height){
@@ -261,11 +261,16 @@ plantWilt = () => {
     if(plantImage === "plant_1"){
         plantImage = "plant_2";
         sounds.plant_wilt_1.play();
-        plantTimeout = setTimeout(plantWilt, 5000);
+        plantTimeout = setTimeout(plantWilt, 10000);
     }
     else {
         sounds.plant_wilt_2.play();
         plantImage = "plant_3";
+        interactables[0].image = "watering_can_1";
+        if(mouseAction === "watering"){
+            mouseAction = null;
+            mouseImage = "mouse_pointer";
+        }
     }
     
 }
