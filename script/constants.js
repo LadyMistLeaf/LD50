@@ -17,3 +17,6 @@ const SCROLL_WIDTH = 14;
 const SCROLL_HEIGHT = 50;
 
 const SCROLL_MULTIPLIER = 2; // One pixel of scroll counts for how many of screen code?
+
+const CURSOR_OFFSET_X = -2;
+const CURSOR_OFFSET_Y = -1;
