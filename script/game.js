@@ -280,6 +280,7 @@ plantWilt = () => {
         if(mouseAction === "watering"){
             mouseAction = null;
             mouseImage = "mouse_pointer";
+            sounds.wateringcan_returning.play();
         }
     }
     
@@ -303,6 +304,7 @@ startWatering = () => {
         mouseImage = "mouse_pointer";
         plantImage = "plant_1";
         interactables[0].image = "watering_can_1";
+        sounds.wateringcan_returning.play();
     }, 1000);
 
 }
