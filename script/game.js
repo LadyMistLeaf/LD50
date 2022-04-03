@@ -178,7 +178,7 @@ spiderDeath = () => {
     spiderIndex++;
     if(spiderIndex <= 5){
         mugStatus = "spider_death_" + spiderIndex;
-        setTimeout(spiderDeath, 300);
+        setTimeout(spiderDeath, 150);
     }
 
 }
