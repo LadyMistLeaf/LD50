@@ -58,23 +58,32 @@ UI
 [x] Picking up watering can
 [x] Watering plant + can resets
 
-[ ] Spider
+[ ] Spider - descends
+[ ] Spider - shooed away
 [ ] Spider - drops in coffee 
+
 [ ] Phone notification
 [ ] Phone breaks
+
 [ ] Dog wanting to play
 [ ] Dog blocking screen entirely
+
 [ ] Lamp flickering
 [ ] Lamp breaking
+
 [ ] Printer printing
 [ ] Printer jamming
 [ ] Printer fixing jam
+
 [ ] Cupboard open
 [ ] Cupboard close
+
 [ ] Door open 
 [ ] Door close
+
 [ ] Window open
 [ ] Window close
+
 [ ] Cat wants out
 [ ] Cat wants in
 
