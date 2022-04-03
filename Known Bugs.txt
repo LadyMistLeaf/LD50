@@ -1,0 +1,1 @@
+ 1 - When the mouse exits the canvas while scrolling, it keeps the scroll function regardless of if it is clicking or not when it comes back into the canvas

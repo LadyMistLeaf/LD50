@@ -2,7 +2,7 @@ let codeLocation = 0;
 let scrollY = 0;
 let mouseScroll = false; // Detect whether or not the mouse Y is being tracked for the scroll
 let mouseAction = null; // Detect whether or not the mouse is doing something to prevent further changes to cursor
-let plantImage = "plant_2";
+let plantImage = "plant_1";
 
 let interactables = [];
 
