@@ -13,15 +13,16 @@ Interactable Objects
 [ ] Dog with ball in mouth
 [ ] Dog outwith ball in mouth
 
-[ ] Phone notification
-[ ] Phone broken because of notifications
-[ ] Printer printing
-[ ] Printer paper jam
+[X] Phone notification
+[X] Phone notification (danger)
+[X] Phone broken because of notifications
+[X] Printer printing
+[X] Printer paper jam
 
 [ ] Lamp on
 [ ] Lamp off
-
 [ ] Lamp breaks
+
 [ ] Cupboard open
 
 [ ] Cursor bulb
@@ -29,13 +30,13 @@ Interactable Objects
 
 [ ] Cat in front of door
 
-[ ] Cat moving through doo
+[ ] Cat moving through door
 [ ] Cat outside of window
 [ ] Cat inside from window
 
-[ ] Timer steps
-[ ] Two sets: Minutes by 15 minutes
-[ ] hours with AM PM sign
+[X] Timer steps
+[X] Two sets: Minutes by 10 minutes
+[X] hours with AM PM sign
 
 [ ] Window open
 [ ] Window closed
