@@ -1,0 +1,26 @@
+---- VISUAL ---
+Code
+[ ] Actual snippets of ingame code 
+
+Interactable Objects
+[ ] Watering can
+[ ] Watering can tilted
+[ ] Plant - healthy
+[ ] Plant - wilted
+[ ] Plant - dead
+
+
+---- AUDIO ----
+[ ] Typing sound when fixing errors
+[ ] Plant wilts
+[ ] Plant dies
+[ ] Picking up watering can
+[ ] Watering plant + can resets
+[ ] MUSIC - Ingame loop
+
+
+
+~~~ NICE TO HAVE ~~~
+[ ] AUDIO - Title screen music
+[ ] AUDIO - Clock ticking down
+[ ] IMAGE - Light theme for code
