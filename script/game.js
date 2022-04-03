@@ -1,20 +1,14 @@
 let codeLocation = 0;
 let scrollY = 0;
 let mouseScroll = false;
+let mouseAction = null;
+let plantImage = "plant_2";
+
+let interactables = [];
 
 // Mouse Location is where the pointer will show, as some actions will cause the pointer to stay still
 let mouseLocationX = mouseX;
 let mouseLocationY = mouseY;
-
-
-startGame = () => { //reInitializing all values so replayability is possible
-    Game.state = "game";
-    // Making a copy of the screen data so the original stays intact for replayability
-    Game.data = JSON.parse(JSON.stringify(screenData)); 
-    codeLocation = SCREEN_TOP;
-    scrollY = 0;
-    mouseScroll = false;
-}
 
 drawGame = () => {
     gameCanvas.fillRect(0, 0, WIDTH, HEIGHT);
@@ -26,8 +20,11 @@ drawGame = () => {
     gameCanvas.drawImage(sprites.scroll, SCREEN_RIGHT, SCREEN_TOP + scrollY);
     gameCanvas.drawImage(sprites.main_bg, 0, 0);
 
-    gameCanvas.drawImage(sprites.watering_can_1, 840, 340);
-    gameCanvas.drawImage(sprites.plant_1, 770, 350);
+    interactables.forEach((item) => {
+        gameCanvas.drawImage(sprites[item.image], item.x, item.y);
+    })
+    // gameCanvas.drawImage(sprites.watering_can_1, 840, 340);
+    gameCanvas.drawImage(sprites[plantImage], 770, 350);
 
     gameCanvas.drawImage(sprites[mouseImage], mouseLocationX - CURSOR_OFFSET_X, mouseLocationY - CURSOR_OFFSET_Y);
 }
@@ -56,6 +53,20 @@ gameMouseClick = (xCoord, yCoord) => {
             mouseScroll = true;
         }
     }
+    else {
+        console.log("clicked outside of screen")
+        let selected = null;
+        interactables.forEach((element) => {
+            if(xCoord >= element.x && xCoord <= element.x + element.height){
+                if(yCoord >= element.y && yCoord <= element.y + element.height){
+                    selected = element;
+                }
+            }
+        });
+        if(selected){
+            selected.action();
+        }
+    }
 }
 
 gameMouseUp = () => {
@@ -78,4 +89,36 @@ gameMouseMove = (x, y) => {
     }
     mouseLocationX = x;
     mouseLocationY = y;
+}
+
+createInteractables = () => {
+    interactables = [
+        {
+            image: "watering_can_1",
+            x: 840,
+            y: 340,
+            width: 189,
+            height: 151,
+            action: function(){
+                console.log("CLICKED THE WATERING")
+                if(mouseAction === null){
+                    if(plantImage === "plant_2"){
+                        this.image = "plant_1";
+                        mouseImage = "watering_can_2";
+                        mouseAction = "watering";
+                    }
+                }
+            }
+        }
+    ]
+}
+
+startGame = () => { //reInitializing all values so replayability is possible
+    Game.state = "game";
+    // Making a copy of the screen data so the original stays intact for replayability
+    Game.data = JSON.parse(JSON.stringify(screenData)); 
+    codeLocation = SCREEN_TOP;
+    scrollY = 0;
+    mouseScroll = false;
+    createInteractables();
 }
