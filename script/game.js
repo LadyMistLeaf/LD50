@@ -6,6 +6,7 @@ let plantImage = "plant_1";
 let mugStatus = "clean";
 let spiderIndex = 0;
 let spiderTimeout = null; //This is where the timer will be stored to interrupt the descent on click;
+let plantTimer = null;
 
 let interactables = [];
 
@@ -153,6 +154,7 @@ createInteractables = () => {
                     if(mugStatus === "clean"){
                         clearTimeout(spiderTimer);
                         spiderUp();
+                        events.push("spider");
                     }
                 }
             }
@@ -169,6 +171,7 @@ selectEvent = () => {
             break;
         case "spider":
             spiderDown();
+            removeEvent("spider");
             break;
     }
     startEvents();
@@ -216,7 +219,6 @@ spiderMoveDown = () => {
                 interactables[1].alive = false;
                 interactables[1].y = -500;
                 spiderDeath();
-                removeEvent("spider");
             }, 200);
         }
     }
@@ -256,7 +258,16 @@ spiderUp = () => {
 }
 
 plantWilt = () => {
-    plantImage = "plant_2";
+    if(plantImage === "plant_1"){
+        plantImage = "plant_2";
+        sounds.plant_wilt_1.play();
+        plantTimeout = setTimeout(plantWilt, 5000);
+    }
+    else {
+        sounds.plant_wilt_2.play();
+        plantImage = "plant_3";
+    }
+    
 }
 
 removeEvent = (removedEvent) => {
