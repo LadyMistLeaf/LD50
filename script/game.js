@@ -160,6 +160,25 @@ createInteractables = () => {
     ]
 }
 
+selectEvent = () => {
+    let rand = Math.floor(Math.random() * events.length);
+    switch (events[rand]){
+        case "plant":
+            plantWilt();
+            removeEvent("plant");
+            break;
+        case "spider":
+            spiderDown();
+            break;
+    }
+    startEvents();
+}
+
+startEvents = () => {
+    let rand = (Math.random() * 5000) + 10000; // 10 to 15 secs in milliseconds
+    setTimeout(selectEvent, rand);
+}
+
 startGame = () => { //reInitializing all values so replayability is possible
     Game.state = "game";
     // Making a copy of the screen data so the original stays intact for replayability
@@ -169,6 +188,7 @@ startGame = () => { //reInitializing all values so replayability is possible
     mouseScroll = false;
     events = ["plant", "spider"];
     createInteractables();
+    startEvents();
 }
 
 spiderDeath = () => {
@@ -196,6 +216,7 @@ spiderMoveDown = () => {
                 interactables[1].alive = false;
                 interactables[1].y = -500;
                 spiderDeath();
+                removeEvent("spider");
             }, 200);
         }
     }
@@ -232,4 +253,17 @@ spiderUp = () => {
     else {
         interactables[1].y = -500;
     }
+}
+
+plantWilt = () => {
+    plantImage = "plant_2";
+}
+
+removeEvent = (removedEvent) => {
+    events.forEach((item, index) => {
+        if(item === removedEvent){
+            events.splice(index, 1);
+            console.log(events);
+        }
+    });
 }
