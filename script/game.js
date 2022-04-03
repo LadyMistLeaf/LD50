@@ -5,6 +5,7 @@ let mouseAction = null; // Detect whether or not the mouse is doing something to
 let plantImage = "plant_1";
 let mugStatus = "clean";
 let spiderIndex = 0;
+let spiderTimeout = null; //This is where the timer will be stored to interrupt the descent on click;
 
 let interactables = [];
 
@@ -27,15 +28,20 @@ drawGame = () => {
     interactables.forEach((item) => {
         gameCanvas.drawImage(sprites[item.image], item.x, item.y);
     })
-
+    gameCanvas.drawImage(sprites[interactables[0].image], interactables[0].x, interactables[0].y);
     gameCanvas.drawImage(sprites[plantImage], 770, 300);
+    
     if(mugStatus === "clean"){
         gameCanvas.drawImage(sprites.mug, 780, 450);
     }
     else{
-
+        gameCanvas.drawImage(sprites[mugStatus], 740, 0);
     }
     
+    if(interactables[1].alive){
+        gameCanvas.drawImage(sprites[interactables[1].image], interactables[1].x, Math.floor(interactables[1].y));
+    }
+
     gameCanvas.drawImage(sprites[mouseImage], mouseLocationX - CURSOR_OFFSET_X, mouseLocationY - CURSOR_OFFSET_Y);
 }
 
@@ -140,13 +146,15 @@ createInteractables = () => {
         },
         {
             image: "spider_down_1",
-            x: 740, 
+            x: 800, 
             y: -500,
             width: 74, 
             height: 475,
+            alive: true,
             action: function(){
                 if(mouseAction === null){
-                    if(mugClean){
+                    if(mugStatus === "clean"){
+                        clearTimeout(spiderTimer);
                         spiderUp();
                     }
                 }
@@ -166,15 +174,33 @@ startGame = () => { //reInitializing all values so replayability is possible
     createInteractables();
 }
 
+spiderDeath = () => {
+    spiderIndex++;
+    if(spiderIndex <= 5){
+        mugStatus = "spider_death_" + spiderIndex;
+        setTimeout(spiderDeath, 300);
+    }
+
+}
+
 spiderMoveDown = () => {
     if(spiderIndex < 25){
         interactables[1].y += SPIDER_DOWN_SPEED;
         spiderIndex++;
-        setTimeout(spiderMoveDown, FRAME);
+        spiderTimer = setTimeout(spiderMoveDown, FRAME);
     }
     else {
         spiderIndex = 0;
-        setTimeout(spiderTwitch, 500);    
+        if(interactables[1].y < 0){
+            spiderTimer = setTimeout(spiderTwitch, 500);
+        }
+        else {
+            setTimeout(() => {
+                interactables[1].alive = false;
+                interactables[1].y = -500;
+                spiderDeath();
+            }, 200);
+        }
     }
 }
 
@@ -187,11 +213,11 @@ spiderTwitch = () => {
             interactables[1].image = "spider_down_1"
         }
         spiderIndex++;
-        setTimeout(spiderTwitch, 300);
+        spiderTimer = setTimeout(spiderTwitch, 300);
     }
     else {
         spiderIndex = 0;
-        setTimeout(spiderMoveDown, 500);
+        spiderTimer = setTimeout(spiderMoveDown, 500);
     }
 }
 
@@ -202,5 +228,11 @@ spiderDown = () => {
 }
 
 spiderUp = () => {
-
+    if(interactables[1].y > -500){
+        interactables[1].y -= SPIDER_UP_SPEED;
+        setTimeout(spiderUp, FRAME);
+    }
+    else {
+        interactables[1].y = -500;
+    }
 }

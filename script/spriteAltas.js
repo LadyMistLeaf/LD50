@@ -16,6 +16,11 @@ sprites.addImage("watering_can_2", "./assets/images/watering_can_2.png");
 sprites.addImage("mug", "./assets/images/mug-x780-y450-1.png");
 sprites.addImage("spider_down_1", "./assets/images/spider_down_x800_yANY_anim_1.png");
 sprites.addImage("spider_down_2", "./assets/images/spider_down_x800_yANY_anim_2.png");
+sprites.addImage("spider_death_1", "./assets/images/spider_death_x740_y000_anim_1.png");
+sprites.addImage("spider_death_2", "./assets/images/spider_death_x740_y000_anim_2.png");
+sprites.addImage("spider_death_3", "./assets/images/spider_death_x740_y000_anim_3.png");
+sprites.addImage("spider_death_4", "./assets/images/spider_death_x740_y000_anim_4.png");
+sprites.addImage("spider_death_5", "./assets/images/spider_death_x740_y000_anim_5.png");
 sprites.addImage("scroll", "./assets/images/scroll.png");
 
 // Temp images

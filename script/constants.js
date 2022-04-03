@@ -21,4 +21,5 @@ const SCROLL_MULTIPLIER = 2; // One pixel of scroll counts for how many of scree
 const CURSOR_OFFSET_X = -2;
 const CURSOR_OFFSET_Y = -1;
 
-const SPIDER_DOWN_SPEED = 4;
+const SPIDER_DOWN_SPEED = 3.4;
+const SPIDER_UP_SPEED = 6;
