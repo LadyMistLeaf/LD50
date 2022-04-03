@@ -13,6 +13,9 @@ let mouseY = 0;
 handleMouseMove = (event) => {
     mouseX = event.clientX - event.path[0].offsetLeft;
     mouseY = event.clientY - event.path[0].offsetTop;
+    if(Game.state === "game"){
+        gameMouseMove();
+    }
 }
 
 const drawMouse = () => {
@@ -43,8 +46,15 @@ const mouseClick = (event) => {
     }
 };
 
+const mouseUp = () => {
+    if(Game.state === "game"){
+        gameMouseUp();
+    }
+}
+
 gameCanvas.canvas.addEventListener('mousemove', handleMouseMove);
-gameCanvas.canvas.addEventListener('click', mouseClick);
+gameCanvas.canvas.addEventListener('mousedown', mouseClick);
+gameCanvas.canvas.addEventListener('mouseup', mouseUp);
 
 fadeOut = () => {
     
