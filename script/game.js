@@ -1,7 +1,7 @@
 let codeLocation = 0;
 let scrollY = 0;
-let mouseScroll = false;
-let mouseAction = null;
+let mouseScroll = false; // Detect whether or not the mouse Y is being tracked for the scroll
+let mouseAction = null; // Detect whether or not the mouse is doing something to prevent further changes to cursor
 let plantImage = "plant_2";
 
 let interactables = [];
@@ -24,7 +24,8 @@ drawGame = () => {
         gameCanvas.drawImage(sprites[item.image], item.x, item.y);
     })
     // gameCanvas.drawImage(sprites.watering_can_1, 840, 340);
-    gameCanvas.drawImage(sprites[plantImage], 770, 350);
+    gameCanvas.drawImage(sprites[plantImage], 770, 300);
+    gameCanvas.drawImage(sprites.mug, 780, 450);
 
     gameCanvas.drawImage(sprites[mouseImage], mouseLocationX - CURSOR_OFFSET_X, mouseLocationY - CURSOR_OFFSET_Y);
 }
@@ -87,6 +88,25 @@ gameMouseMove = (x, y) => {
             scrollY = SCREEN_BOTTOM - SCROLL_HEIGHT - SCREEN_TOP;
         }
     }
+    else if (mouseAction){
+
+    }
+    else {
+        let selected
+        interactables.forEach((element) => {
+            if(x >= element.x && x <= element.x + element.height){
+                if(y >= element.y && y <= element.y + element.height){
+                    selected = element;
+                }
+            }
+        });
+        if(selected){
+            mouseImage = "mouse_hand";
+        }
+        else {
+            mouseImage = "mouse_pointer";
+        }
+    }
     mouseLocationX = x;
     mouseLocationY = y;
 }
@@ -100,7 +120,6 @@ createInteractables = () => {
             width: 189,
             height: 151,
             action: function(){
-                console.log("CLICKED THE WATERING")
                 if(mouseAction === null){
                     if(plantImage === "plant_2"){
                         this.image = "plant_1";

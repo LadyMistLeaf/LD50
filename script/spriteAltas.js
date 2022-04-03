@@ -13,8 +13,9 @@ sprites.addImage("plant_2", "./assets/images/plant-2.png");
 sprites.addImage("plant_3", "./assets/images/plant-3.png");
 sprites.addImage("watering_can_1", "./assets/images/watering_can_1.png");
 sprites.addImage("watering_can_2", "./assets/images/watering_can_2.png");
+sprites.addImage("mug", "./assets/images/mug-x780-y450-1.png");
+sprites.addImage("scroll", "./assets/images/scroll.png");
 
 // Temp images
 sprites.addImage("blurb1", "./assets/images/blurb1.png");
 sprites.addImage("blurb2", "./assets/images/blurb2.png");
-sprites.addImage("scroll", "./assets/images/scroll.png");
