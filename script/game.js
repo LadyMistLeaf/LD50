@@ -6,6 +6,7 @@ let plantImage = "plant_1";
 let mugStatus = "clean";
 let spiderIndex = 0;
 let spiderTimeout = null; //This is where the timer will be stored to interrupt the descent on click;
+let plantTimer = null;
 
 let interactables = [];
 
@@ -25,9 +26,6 @@ drawGame = () => {
     gameCanvas.drawImage(sprites.scroll, SCREEN_RIGHT, SCREEN_TOP + scrollY);
     gameCanvas.drawImage(sprites.main_bg, 0, 0);
 
-    interactables.forEach((item) => {
-        gameCanvas.drawImage(sprites[item.image], item.x, item.y);
-    })
     gameCanvas.drawImage(sprites[interactables[0].image], interactables[0].x, interactables[0].y);
     gameCanvas.drawImage(sprites[plantImage], 770, 300);
     
@@ -137,7 +135,7 @@ createInteractables = () => {
             action: function(){
                 if(mouseAction === null){
                     if(plantImage === "plant_2"){
-                        this.image = "plant_1";
+                        this.image = "ghost";
                         mouseImage = "watering_can_2";
                         mouseAction = "watering";
                     }
@@ -156,11 +154,32 @@ createInteractables = () => {
                     if(mugStatus === "clean"){
                         clearTimeout(spiderTimer);
                         spiderUp();
+                        events.push("spider");
                     }
                 }
             }
         }
     ]
+}
+
+selectEvent = () => {
+    let rand = Math.floor(Math.random() * events.length);
+    switch (events[rand]){
+        case "plant":
+            plantWilt();
+            removeEvent("plant");
+            break;
+        case "spider":
+            spiderDown();
+            removeEvent("spider");
+            break;
+    }
+    startEvents();
+}
+
+startEvents = () => {
+    let rand = (Math.random() * 5000) + 10000; // 10 to 15 secs in milliseconds
+    setTimeout(selectEvent, rand);
 }
 
 startGame = () => { //reInitializing all values so replayability is possible
@@ -172,6 +191,7 @@ startGame = () => { //reInitializing all values so replayability is possible
     mouseScroll = false;
     events = ["plant", "spider"];
     createInteractables();
+    startEvents();
 }
 
 spiderDeath = () => {
@@ -235,4 +255,26 @@ spiderUp = () => {
     else {
         interactables[1].y = -500;
     }
+}
+
+plantWilt = () => {
+    if(plantImage === "plant_1"){
+        plantImage = "plant_2";
+        sounds.plant_wilt_1.play();
+        plantTimeout = setTimeout(plantWilt, 5000);
+    }
+    else {
+        sounds.plant_wilt_2.play();
+        plantImage = "plant_3";
+    }
+    
+}
+
+removeEvent = (removedEvent) => {
+    events.forEach((item, index) => {
+        if(item === removedEvent){
+            events.splice(index, 1);
+            console.log(events);
+        }
+    });
 }
