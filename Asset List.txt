@@ -9,21 +9,34 @@ Interactable Objects
 [X] Plant - healthy
 [X] Plant - wilted
 [X] Plant - dead
-[ ] Dog wanting to play
-[ ] Dog occluding screen entirely
+
+[ ] Dog with ball in mouth
+[ ] Dog outwith ball in mouth
+
 [ ] Phone notification
 [ ] Phone broken because of notifications
 [ ] Printer printing
 [ ] Printer paper jam
+
 [ ] Lamp on
 [ ] Lamp off
+
 [ ] Lamp breaks
 [ ] Cupboard open
+
+[ ] Cursor bulb
+[ ] Cursor paper
+
 [ ] Cat in front of door
+
 [ ] Cat moving through doo
 [ ] Cat outside of window
 [ ] Cat inside from window
+
 [ ] Timer steps
+[ ] Two sets: Minutes by 15 minutes
+[ ] hours with AM PM sign
+
 [ ] Window open
 [ ] Window closed
 
@@ -31,6 +44,8 @@ UI
 [ ] Title screen buttons
 [ ] Title screen BG
 [ ] Tutorial screen
+[ ] results screen
+
 [ ] 
 [ ] Win condition
 [ ] Fail condition
@@ -41,6 +56,9 @@ UI
 [x] Plant dies
 [x] Picking up watering can
 [x] Watering plant + can resets
+
+[ ] Spider
+[ ] Spider - drops in coffee 
 [ ] Phone notification
 [ ] Phone breaks
 [ ] Dog wanting to play
@@ -58,6 +76,7 @@ UI
 [ ] Window close
 [ ] Cat wants out
 [ ] Cat wants in
+
 [ ] MUSIC - Ingame loop
 [ ] MUSIC - Win
 [ ] MUSIC - Fail
