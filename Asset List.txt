@@ -9,7 +9,31 @@ Interactable Objects
 [X] Plant - healthy
 [X] Plant - wilted
 [X] Plant - dead
+[ ] Dog wanting to play
+[ ] Dog occluding screen entirely
+[ ] Phone notification
+[ ] Phone broken because of notifications
+[ ] Printer printing
+[ ] Printer paper jam
+[ ] Lamp on
+[ ] Lamp off
+[ ] Lamp breaks
+[ ] Cupboard open
+[ ] Cat in front of door
+[ ] Cat moving through doo
+[ ] Cat outside of window
+[ ] Cat inside from window
+[ ] Timer steps
+[ ] Window open
+[ ] Window closed
 
+UI
+[ ] Title screen buttons
+[ ] Title screen BG
+[ ] Tutorial screen
+[ ] 
+[ ] Win condition
+[ ] Fail condition
 
 ---- AUDIO ----
 [x] Typing sound when fixing errors
@@ -17,9 +41,28 @@ Interactable Objects
 [x] Plant dies
 [x] Picking up watering can
 [x] Watering plant + can resets
+[ ] Phone notification
+[ ] Phone breaks
+[ ] Dog wanting to play
+[ ] Dog blocking screen entirely
+[ ] Lamp flickering
+[ ] Lamp breaking
+[ ] Printer printing
+[ ] Printer jamming
+[ ] Printer fixing jam
+[ ] Cupboard open
+[ ] Cupboard close
+[ ] Door open 
+[ ] Door close
+[ ] Window open
+[ ] Window close
+[ ] Cat wants out
+[ ] Cat wants in
 [ ] MUSIC - Ingame loop
-
-
+[ ] MUSIC - Win
+[ ] MUSIC - Fail
+[ ] MUSIC - Title Screen
+[ ] MUSIC - Pixeleaf Jingle
 
 ~~~ NICE TO HAVE ~~~
 [ ] AUDIO - Title screen music
