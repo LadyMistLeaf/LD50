@@ -5,14 +5,18 @@ let mouseAction = null; // Detect whether or not the mouse is doing something to
 let plantImage = "plant_1";
 let mugStatus = "clean";
 let spiderIndex = 0;
+let lampIndex = 0;
 let spiderTimeout = null; //This is where the timer will be stored to interrupt the descent on click;
 let plantTimer = null;
 let codeFixTimer = null;
 let phoneTimer = null;
+let lampTimer = null;
 
 let interactables = [];
 
 let events = [];
+
+let lampTimes = [100, 2000, 200, 1500, 500, 1000, 1000, 1000, 1500, 1000, 2000, 500]; // Flicker times in milliseconds
 
 // Mouse Location is where the pointer will show, as some actions will cause the pointer to stay still
 let mouseLocationX = mouseX;
@@ -253,6 +257,10 @@ selectEvent = () => {
             phoneBuzz();
             removeEvent("phone");
             break;
+        case "lamp":
+            lampFlicker();
+            removeEvent("lamp");
+            break;
     }
     startEvents();
 }
@@ -269,7 +277,7 @@ startGame = () => { //reInitializing all values so replayability is possible
     codeLocation = SCREEN_TOP;
     scrollY = 0;
     mouseScroll = false;
-    events = ["plant", "spider", "phone"];
+    events = ["plant", "spider", "phone", "lamp"];
     createInteractables();
     startEvents();
 }
@@ -400,5 +408,23 @@ phoneBuzz = () => {
         case "phone_imminent":
             interactables[3].image = "phone_cracked";
             break;
+    }
+}
+
+lampFlicker = () => {
+    if(lampIndex < lampTimes.length){
+        if(interactables[6].image === "lamp_lit"){
+            interactables[6].image = "lamp_dark";
+            lampIndex++;
+            lampTimer = setTimeout(lampFlicker, lampTimes[lampIndex - 1]);
+        }
+        else {
+            interactables[6].image = "lamp_lit";
+            lampIndex++;
+            lampTimer = setTimeout(lampFlicker, lampTimes[lampIndex - 1]);
+        }
+    }
+    else {
+        interactables[6].image = "lamp_burnt";
     }
 }
