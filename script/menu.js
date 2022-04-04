@@ -1,6 +1,10 @@
 let mouseX = 0;
 let mouseY = 0;
 
+goToMenu = () => {
+    sounds.title_music.play();
+}
+
 drawMenu = () => {
     gameCanvas.drawImage(sprites.title_screen, 0, 0);
     gameCanvas.drawImage(sprites.start, 391, 300);
@@ -12,6 +16,8 @@ drawMenu = () => {
 menuMouseClick = (xCoord, yCoord) => {
     if(xCoord >= 391 && xCoord <= 634){
         if(yCoord >= 300 && yCoord <= 335){
+            sounds.title_music.pause();
+            sounds.title_music.currentTime = 0;
             startGame();
         }
         else if(yCoord >= 360 && yCoord <= 395){

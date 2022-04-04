@@ -50,8 +50,6 @@ gameCanvas.canvas.addEventListener('mousemove', handleMouseMove);
 gameCanvas.canvas.addEventListener('mousedown', mouseClick);
 gameCanvas.canvas.addEventListener('mouseup', mouseUp);
 
-fadeOut = () => {
-    
-}
-
 requestAnimationFrame(step);
+
+goToMenu();

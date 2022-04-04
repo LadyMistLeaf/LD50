@@ -464,12 +464,12 @@ phoneBuzz = () => {
         case "phone_off": 
             interactables[3].image = "phone_on";
             sounds.phone_notification.play();
-            phoneTimer = setTimeout(phoneBuzz, 4000);
+            phoneTimer = setTimeout(phoneBuzz, 6000);
             break;
         case "phone_on":
             interactables[3].image = "phone_imminent";
             sounds.phone_urgent.play();
-            phoneTimer = setTimeout(phoneBuzz, 4000);
+            phoneTimer = setTimeout(phoneBuzz, 6000);
             break;
         case "phone_imminent":
             sounds.phone_broken.play();

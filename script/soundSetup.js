@@ -10,6 +10,8 @@ sounds.addSound = (name, oggsrc, mp3src) => {
     // }
 }
 
+sounds.addSound('title_music', './assets/music/music_title.ogg', './assets/music/music_title.mp3');
+
 sounds.addSound('plant_wilt_1', './assets/sfx/plant_wilt_1.ogg', './assets/sfx/plant_wilt_1.mp3');
 sounds.addSound('plant_wilt_2', './assets/sfx/plant_wilt_2.ogg', './assets/sfx/plant_wilt_2.mp3');
 sounds.addSound('wateringcan_pickup', './assets/sfx/wateringcan_pickup.ogg', './assets/sfx/wateringcan_pickup.mp3');
