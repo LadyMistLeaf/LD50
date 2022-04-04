@@ -19,17 +19,17 @@ Interactable Objects
 [X] Printer printing
 [X] Printer paper jam
 
-[ ] Lamp on
-[ ] Lamp off
-[ ] Lamp breaks
+[X] Lamp on
+[X] Lamp off
+[X] Lamp breaks
 
-[ ] Cupboard open
+[X] Cupboard open
+[X] Cupboard closed
 
-[ ] Cursor bulb
-[ ] Cursor paper
+[X] Cursor bulb
+[X] Cursor paper
 
 [ ] Cat in front of door
-
 [ ] Cat moving through door
 [ ] Cat outside of window
 [ ] Cat inside from window
@@ -47,7 +47,6 @@ UI
 [ ] Tutorial screen
 [ ] results screen
 
-[ ] 
 [ ] Win condition
 [ ] Fail condition
 
@@ -60,17 +59,21 @@ UI
 
 [ ] Spider - descends
 [ ] Spider - shooed away
-[ ] Spider - drops in coffee 
+[ ] Spider - drops into coffee 
+
+[ ] Bulb bursts
+[ ] Bulb flickers
+[ ] Picking up new bulb
+[ ] Screwing in new bulb
 
 [ ] Phone notification
+[ ] Phone notification urgent
 [ ] Phone breaks
 
 [ ] Dog wanting to play
 [ ] Dog blocking screen entirely
 
-[ ] Lamp flickering
-[ ] Lamp breaking
-
+[ ] Picking up new paper
 [ ] Printer printing
 [ ] Printer jamming
 [ ] Printer fixing jam
