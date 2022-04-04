@@ -21,6 +21,14 @@ sprites.addImage("spider_death_2", "./assets/images/spider_death_x740_y000_anim_
 sprites.addImage("spider_death_3", "./assets/images/spider_death_x740_y000_anim_3.png");
 sprites.addImage("spider_death_4", "./assets/images/spider_death_x740_y000_anim_4.png");
 sprites.addImage("spider_death_5", "./assets/images/spider_death_x740_y000_anim_5.png");
+sprites.addImage("door_open", "./assets/images/door_open_x130_y210.png");
+sprites.addImage("door_closed", "./assets/images/door_closed_x130_y210.png");
+sprites.addImage("phone_off", "./assets/images/phone_off_x074_y490.png");
+sprites.addImage("phone_on", "./assets/images/phone_on_x074_y490.png");
+sprites.addImage("phone_imminent", "./assets/images/phone_imminent_x074_y490.png");
+sprites.addImage("phone_cracked", "./assets/images/phone_cracked_x074_y490.png");
+sprites.addImage("printer_error", "./assets/images/printer-error-x000-y300.png");
+sprites.addImage("printer_good", "./assets/images/printer-good-x000-y300.png");
 sprites.addImage("scroll", "./assets/images/scroll.png");
 sprites.addImage("ghost", "./assets/images/ghost.png");
 

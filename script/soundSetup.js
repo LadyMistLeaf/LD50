@@ -15,3 +15,4 @@ sounds.addSound('plant_wilt_2', './assets/sfx/plant_wilt_2.ogg', './assets/sfx/p
 sounds.addSound('wateringcan_pickup', './assets/sfx/wateringcan_pickup.ogg', './assets/sfx/wateringcan_pickup.mp3');
 sounds.addSound('wateringcan_returning', './assets/sfx/wateringcan_returning.ogg', './assets/sfx/wateringcan_returning.mp3');
 sounds.addSound('plant_watered', './assets/sfx/plant_watered.ogg', './assets/sfx/plant_watered.mp3');
+sounds.addSound('typing', './assets/sfx/typing_loop.ogg', './assets/sfx/typing_loop.mp3');

@@ -7,6 +7,8 @@ let mugStatus = "clean";
 let spiderIndex = 0;
 let spiderTimeout = null; //This is where the timer will be stored to interrupt the descent on click;
 let plantTimer = null;
+let codeFixTimer = null;
+let phoneTimer = null;
 
 let interactables = [];
 
@@ -15,6 +17,8 @@ let events = [];
 // Mouse Location is where the pointer will show, as some actions will cause the pointer to stay still
 let mouseLocationX = mouseX;
 let mouseLocationY = mouseY;
+
+sounds.typing.loop = true;
 
 drawGame = () => {
     gameCanvas.fillRect(0, 0, WIDTH, HEIGHT);
@@ -27,6 +31,10 @@ drawGame = () => {
     gameCanvas.drawImage(sprites.main_bg, 0, 0);
 
     gameCanvas.drawImage(sprites[interactables[0].image], interactables[0].x, interactables[0].y);
+    gameCanvas.drawImage(sprites[interactables[2].image], interactables[2].x, interactables[2].y);
+    gameCanvas.drawImage(sprites[interactables[3].image], interactables[3].x, interactables[3].y);
+    gameCanvas.drawImage(sprites[interactables[4].image], interactables[4].x, interactables[4].y);
+
     gameCanvas.drawImage(sprites[plantImage], 770, 300);
     
     if(mugStatus === "clean"){
@@ -58,7 +66,9 @@ gameMouseClick = (xCoord, yCoord) => {
                     index++;
                 }
             }
-            console.log("Code block " + piece);
+            if(!Game.data[piece].fixed){
+                fixCode(piece);
+            }
         }
     }
     else if (xCoord >= SCREEN_RIGHT && xCoord <= SCREEN_RIGHT + SCROLL_WIDTH){
@@ -168,6 +178,40 @@ createInteractables = () => {
                     }
                 }
             }
+        },
+        {
+            image: "door_closed",
+            x: 130,
+            y: 210,
+            width: 72,
+            height: 218,
+            action: function(){
+                console.log("Door clicked");
+            }
+        },
+        {
+            image: "phone_off",
+            x: 74,
+            y: 490,
+            width: 179,
+            height: 86,
+            action: function(){
+                if(interactables[3].image === "phone_on" || interactables[3].image === "phone_imminent"){
+                    clearTimeout(phoneTimer);
+                    interactables[3].image = "phone_off";
+                    events.push("phone");
+                }
+            }
+        },
+        {
+            image: "printer_good",
+            x: 0,
+            y: 300,
+            width: 124,
+            height: 73,
+            action: function(){
+                console.log("Printer clicked!");
+            }
         }
     ]
 }
@@ -182,6 +226,10 @@ selectEvent = () => {
         case "spider":
             spiderDown();
             removeEvent("spider");
+            break;
+        case "phone":
+            phoneBuzz();
+            removeEvent("phone");
             break;
     }
     startEvents();
@@ -199,7 +247,7 @@ startGame = () => { //reInitializing all values so replayability is possible
     codeLocation = SCREEN_TOP;
     scrollY = 0;
     mouseScroll = false;
-    events = ["plant", "spider"];
+    events = ["plant", "spider", "phone"];
     createInteractables();
     startEvents();
 }
@@ -305,5 +353,30 @@ startWatering = () => {
         interactables[0].image = "watering_can_1";
         sounds.wateringcan_returning.play();
     }, 1000);
+}
 
+fixCode = (piece) => {
+    sounds.typing.play();
+    let time = Game.data[piece].time;
+    codeFixTimer = setTimeout(() => {
+        Game.data[piece].name = Game.data[piece].correct;
+        Game.data[piece].fixed = true;
+        sounds.typing.pause();
+    }, time);
+}
+
+phoneBuzz = () => {
+    switch(interactables[3].image){
+        case "phone_off": 
+            interactables[3].image = "phone_on";
+            phoneTimer = setTimeout(phoneBuzz, 4000);
+            break;
+        case "phone_on":
+            interactables[3].image = "phone_imminent";
+            phoneTimer = setTimeout(phoneBuzz, 4000);
+            break;
+        case "phone_imminent":
+            interactables[3].image = "phone_cracked";
+            break;
+    }
 }
