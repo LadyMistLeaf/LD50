@@ -6,11 +6,14 @@ let plantImage = "plant_1";
 let mugStatus = "clean";
 let spiderIndex = 0;
 let lampIndex = 0;
+let codeTimeElapsed = 0;
 let spiderTimeout = null; //This is where the timer will be stored to interrupt the descent on click;
 let plantTimer = null;
 let codeFixTimer = null;
 let phoneTimer = null;
 let lampTimer = null;
+
+let barPercent = 0;
 
 let interactables = [];
 
@@ -26,6 +29,7 @@ sounds.typing.loop = true;
 sounds.lamp_flicker.loop = true;
 
 drawGame = () => {
+    gameCanvas.fillStyle = "#000000";
     gameCanvas.fillRect(0, 0, WIDTH, HEIGHT);
     Game.data.forEach((codeBlock) => {
         gameCanvas.drawImage(sprites[codeBlock.name], SCREEN_LEFT, codeLocation - scrollY * SCROLL_MULTIPLIER);
@@ -56,6 +60,13 @@ drawGame = () => {
     }
 
     gameCanvas.drawImage(sprites[mouseImage], mouseLocationX - CURSOR_OFFSET_X, mouseLocationY - CURSOR_OFFSET_Y);
+
+    if(mouseAction === "debugging"){
+        gameCanvas.fillStyle = "#666666";
+        gameCanvas.fillRect(mouseLocationX + 34, mouseLocationY + 34, 154, 24);
+        gameCanvas.fillStyle = "#D771B3";
+        gameCanvas.fillRect(mouseLocationX + 36, mouseLocationY + 36, 150 * barPercent, 20);
+    }
 }
 
 gameMouseClick = (xCoord, yCoord) => {
@@ -111,6 +122,10 @@ gameMouseUp = () => {
     if(mouseScroll){
         mouseScroll = false;
     }
+    if(mouseAction === "debugging"){
+        sounds.typing.pause();
+        mouseAction = null;
+    }
 }
 
 gameMouseMove = (x, y) => {
@@ -127,6 +142,9 @@ gameMouseMove = (x, y) => {
     }
     else if (mouseAction){
         if(mouseAction === "wateringPlant"){
+            return;
+        }
+        if(mouseAction === "debugging"){
             return;
         }
     }
@@ -227,6 +245,7 @@ createInteractables = () => {
                     interactables[4].jammed = false;
                     interactables[4].image = "printer_good";
                     sounds.printer_fixing.play();
+                    events.push("printer");
                 }
             }
         },
@@ -406,12 +425,28 @@ startWatering = () => {
 
 fixCode = (piece) => {
     sounds.typing.play();
+    mouseAction = "debugging";
     let time = Game.data[piece].time;
-    codeFixTimer = setTimeout(() => {
-        Game.data[piece].name = Game.data[piece].correct;
-        Game.data[piece].fixed = true;
-        sounds.typing.pause();
-    }, time);
+    codeTimeElapsed = 0;
+    barPercent = 0;
+    fixingCode(time, piece);
+}
+
+fixingCode = (time, piece) => {
+    if(mouseAction === "debugging"){
+        codeTimeElapsed += 17;
+        if(codeTimeElapsed < time){
+            barPercent = codeTimeElapsed / time;
+            codeFixTimer = setTimeout(() => {
+                fixingCode(time, piece);
+            }, FRAME);
+        }
+        else {
+            Game.data[piece].name = Game.data[piece].correct;
+            Game.data[piece].fixed = true;
+            sounds.typing.pause();
+        }
+    }
 }
 
 phoneBuzz = () => {
