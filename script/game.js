@@ -320,7 +320,7 @@ startEvents = () => {
 startGame = () => { //reInitializing all values so replayability is possible
     Game.state = "game";
     // Making a copy of the screen data so the original stays intact for replayability
-    Game.data = JSON.parse(JSON.stringify(screenData)); 
+    Game.data = JSON.parse(JSON.stringify(screenData[0])); 
     codeLocation = SCREEN_TOP;
     scrollY = 0;
     mouseScroll = false;
