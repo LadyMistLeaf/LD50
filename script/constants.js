@@ -16,7 +16,7 @@ const SCREEN_RIGHT = 712;  // 726 without removing the scroll bar
 const SCROLL_WIDTH = 14;
 const SCROLL_HEIGHT = 50;
 
-const SCROLL_MULTIPLIER = 2; // One pixel of scroll counts for how many of screen code?
+const SCROLL_MULTIPLIER = 21; // One pixel of scroll counts for how many of screen code?
 
 const CURSOR_OFFSET_X = -2;
 const CURSOR_OFFSET_Y = -1;
