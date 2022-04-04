@@ -29,6 +29,11 @@ sprites.addImage("phone_imminent", "./assets/images/phone_imminent_x074_y490.png
 sprites.addImage("phone_cracked", "./assets/images/phone_cracked_x074_y490.png");
 sprites.addImage("printer_error", "./assets/images/printer-error-x000-y300.png");
 sprites.addImage("printer_good", "./assets/images/printer-good-x000-y300.png");
+sprites.addImage("cupboard_closed", "./assets/images/cupboard_closed_x000_y350.png");
+sprites.addImage("cupboard_open", "./assets/images/cupboard_open_x000_y350.png");
+sprites.addImage("lamp_lit", "./assets/images/lamp_lit_x140_y000.png");
+sprites.addImage("lamp_dark", "./assets/images/lamp_dark_x140_y000.png");
+sprites.addImage("lamp_burnt", "./assets/images/lamp_burnedout_x140_y000.png");
 sprites.addImage("scroll", "./assets/images/scroll.png");
 sprites.addImage("ghost", "./assets/images/ghost.png");
 
@@ -37,7 +42,3 @@ sprites.addImage("code2e", "./assets/images-code/code_DE_002.png");
 sprites.addImage("code2", "./assets/images-code/code_DC_002.png");
 sprites.addImage("code3", "./assets/images-code/code_DF_003.png");
 sprites.addImage("code4", "./assets/images-code/code_DF_004.png");
-
-// Temp images
-sprites.addImage("blurb1", "./assets/images/blurb1.png");
-sprites.addImage("blurb2", "./assets/images/blurb2.png");

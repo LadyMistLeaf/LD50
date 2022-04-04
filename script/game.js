@@ -34,6 +34,8 @@ drawGame = () => {
     gameCanvas.drawImage(sprites[interactables[2].image], interactables[2].x, interactables[2].y);
     gameCanvas.drawImage(sprites[interactables[3].image], interactables[3].x, interactables[3].y);
     gameCanvas.drawImage(sprites[interactables[4].image], interactables[4].x, interactables[4].y);
+    gameCanvas.drawImage(sprites[interactables[5].image], interactables[5].x, interactables[5].y);
+    gameCanvas.drawImage(sprites[interactables[6].image], interactables[6].x, interactables[6].y);
 
     gameCanvas.drawImage(sprites[plantImage], 770, 300);
     
@@ -211,6 +213,26 @@ createInteractables = () => {
             height: 73,
             action: function(){
                 console.log("Printer clicked!");
+            }
+        },
+        {
+            image: "cupboard_closed",
+            x: 0, 
+            y: 350,
+            width: 160,
+            height: 135,
+            action: function(){
+                interactables[5].image = "cupboard_open";
+            }
+        },
+        {
+            image: "lamp_lit",
+            x: 140,
+            y: 0,
+            width: 89,
+            height: 173,
+            action: function(){
+                interactables[6].image = "lamp_dark";
             }
         }
     ]
