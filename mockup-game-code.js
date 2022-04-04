@@ -1,6 +1,6 @@
 import { ludonarrativeDissonance as ld } from "cms"
 import { thisCouldBeYou as player } from "ld50"
-import { solitaire as importantCode } from "win31"
+import { solitaire as importantCode } from "win3.11"
 
 var hopesAndDreams = [];
 var heap = [];
@@ -24,8 +24,8 @@ if (bug)
 else {
     // preliminary capability check
     if (!snacks) {
-        getHangry();
-        getSnacks();
+        getHangry(player);
+        getSnacks(player);
     }
 
     var ideasRemaining = all;
@@ -52,7 +52,8 @@ else {
         fishingForCompliments();
     } catch (error) {
         // good catch!
-        releaseIntoTheWild(error);
+        if (!releasePokemonIntoTheWild(error))
+            evolve(error);
     }
 
     reticulateSplines(player.spine);
@@ -102,10 +103,10 @@ function checkK9Status(k9) {
                 throwBall(k9, "hallway");
           break;
         case "hug":
-            var snacko = getSnacks();
+            var snacko = getSnacks(k9);
             giveSnacko(snacko);
           break;
-      }
+    }
 }
 
 function procrastinate(who) {
@@ -151,9 +152,9 @@ function progressCheck(game) {
         player.stress *= Math.random(10)
     
     if (player.stress > 600)
-        getSnacks();
+        getSnacks(player);
     else    
-        getSnacks();
+        getSnacks(player);
     }
 }
 
@@ -170,11 +171,14 @@ function plumberSimulation(plumber) {
         plumber = Plumbers.theOtherOne();
 
     if (plumber.hasMagicMushroom){
+        plumber.eatMushroom();
         // This is legacy code, tell Miyamoto to fix
         stomp(angrySpikedTurtleDinosaurThing);
     } else {
         // better luck next time
         plumber.hasMagicMushroom = Math.random(1.0);
+        if (!plumber.hasMagicMushroom)
+            getSnacks(plumber);
     }
 }
 
@@ -194,7 +198,12 @@ function hasEnoughPolish(game) {
 }
 
 function stomp() {
-    // Todo: Refactor this to JS!
+    // 1986/02/04 TODO: Refactor this 6502 ASM to C!
+    // 1992/12/01 TODO: Refactor this 6502 ASM to C++!
+    // 1998/02/03 TODO: Refactor this 6502 ASM to Java!
+    // 2005/12/10 Anyone?
+    // 2022/04/04 Hi! What's an ASM?
+    INC $D021
     LDA $D021
     STA $0203
     STA $020B
@@ -220,16 +229,15 @@ function stomp() {
     RTI
 }
 
-function finishTheGame()
-{
-    var game = getCurrentGame()
-    game.add(titleScreen)
+function finishTheGame() {
+    var game = getCurrentGame();
+    game.add(titleScreen);
     while (game.couldNeedSomePolish) {
         game.doPolish();
         hasEnoughPolish(game);
     }
-    ld.add(game.screenshots)
-    ld.add(game.description)
+    ld.add(game.screenshots);
+    ld.add(game.description);
     upload(game);
     player.rest();
 }
