@@ -26,6 +26,12 @@ const step = () => {
     else if(Game.state === "game"){
         drawGame();
     }
+    else if(Game.state === "howTo"){
+        drawHowTo();
+    }
+    else if(Game.state === "results"){
+        drawResults();
+    }
 
     requestAnimationFrame(step);
 }
@@ -37,7 +43,12 @@ const mouseClick = (event) => {
         menuMouseClick(xCoord, yCoord);
     } else if (Game.state === "game"){
         gameMouseClick(xCoord, yCoord);
+    } else if (Game.state === "howTo"){
+        howToMouseClick(xCoord, yCoord);
+    } else if (Game.state == "results"){
+        resultsMouseClick(xCoord, yCoord);
     }
+
 };
 
 const mouseUp = () => {

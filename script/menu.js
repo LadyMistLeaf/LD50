@@ -17,11 +17,12 @@ menuMouseClick = (xCoord, yCoord) => {
     if(xCoord >= 391 && xCoord <= 634){
         if(yCoord >= 300 && yCoord <= 335){
             sounds.title_music.pause();
-            sounds.title_music.currentTime = 0;
+            sounds.title_music.currentTime = 0.0;
             startGame();
         }
         else if(yCoord >= 360 && yCoord <= 395){
-            // How to
+            Game.state = "howTo";
+            goToHowTo();
         }
         else if(yCoord >= 420 && yCoord <= 455){
             // credits
