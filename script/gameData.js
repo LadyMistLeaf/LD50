@@ -2,23 +2,25 @@
 
 const screenData = [
     {
-        name: "blurb1",
-        height: 200,
+        name: "code1",
+        height: 110,
+        fixed: true,
+    },
+    {
+        name: "code2e",
+        height: 24,
         fixed: false,
+        correct: "code2",
+        time: 1000
     },
     {
-        name: "blurb2",
-        height: 200,
+        name: "code3",
+        height: 181,
         fixed: true
     },
     {
-        name: "blurb2",
-        height: 200,
+        name: "code4",
+        height: 431,
         fixed: true
-    },
-    {
-        name: "blurb1",
-        height: 200,
-        fixed: false
     }
 ]
