@@ -444,6 +444,7 @@ fixingCode = (time, piece) => {
         else {
             Game.data[piece].name = Game.data[piece].correct;
             Game.data[piece].fixed = true;
+            mouseAction = null;
             sounds.typing.pause();
         }
     }
