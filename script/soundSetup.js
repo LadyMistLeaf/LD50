@@ -5,12 +5,15 @@ sounds.addSound = (name, oggsrc, mp3src) => {
     if(sounds[name].canPlayType('audio/ogg')){
         sounds[name].setAttribute('src', oggsrc);
     }
-    // else {
-    //     sounds[name].setAttribute('src', mp3src);
-    // }
+    else {
+        sounds[name].setAttribute('src', mp3src);
+    }
 }
 
 sounds.addSound('title_music', './assets/music/music_title.ogg', './assets/music/music_title.mp3');
+sounds.addSound('music_ingame', "./assets/music/music_ingame_loop.ogg", './assets/music/music_ingame_loop.mp3');
+sounds.addSound('music_result', './assets/music/music_results.ogg', './assets/music/music_results.mp3')
+sounds.addSound('music_jingle', './assets/music/music_pixeleaf_jingle.ogg', './assets/music/music_pixeleaf_jingle.mp3')
 
 sounds.addSound('plant_wilt_1', './assets/sfx/plant_wilt_1.ogg', './assets/sfx/plant_wilt_1.mp3');
 sounds.addSound('plant_wilt_2', './assets/sfx/plant_wilt_2.ogg', './assets/sfx/plant_wilt_2.mp3');

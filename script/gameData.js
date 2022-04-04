@@ -244,7 +244,7 @@ const screenData = [
             name: "code40e",
             height: 25,
             fixed: false,
-            correct: "code2",
+            correct: "code40",
             time: 1000
         },{
             name: "code41",

@@ -12,6 +12,7 @@ let plantTimer = null;
 let codeFixTimer = null;
 let phoneTimer = null;
 let lampTimer = null;
+let codeBugs = 27;
 
 let barPercent = 0;
 
@@ -28,6 +29,7 @@ let mouseLocationY = mouseY;
 sounds.typing.loop = true;
 sounds.lamp_flicker.loop = true;
 sounds.phone_typing.loop = true;
+sounds.music_ingame.loop = true;
 
 drawGame = () => {
     gameCanvas.fillStyle = "#000000";
@@ -324,7 +326,21 @@ startGame = () => { //reInitializing all values so replayability is possible
     codeLocation = SCREEN_TOP;
     scrollY = 0;
     mouseScroll = false;
+    mouseAction = null;
+    plantImage = "plant_1";
+    mugStatus = "clean";
+    spiderIndex = 0;
+    lampIndex = 0;
+    timeElapsed = 0;
+    spiderTimeout = null;
+    plantTimer = null;
+    codeFixTimer = null;
+    phoneTimer = null;
+    lampTimer = null;
+    codeBugs = 27;
+    mouseScroll = false;
     events = ["plant", "spider", "phone", "lamp", "printer"];
+    sounds.music_ingame.play();
     createInteractables();
     startEvents();
 }
@@ -454,6 +470,7 @@ fixingCode = (time, piece) => {
             Game.data[piece].name = Game.data[piece].correct;
             Game.data[piece].fixed = true;
             mouseAction = null;
+            codeBugs--;
             sounds.typing.pause();
         }
     }
