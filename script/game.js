@@ -221,8 +221,13 @@ createInteractables = () => {
             y: 300,
             width: 124,
             height: 73,
+            jammed: false,
             action: function(){
-                console.log("Printer clicked!");
+                if(interactables[4].jammed){
+                    interactables[4].jammed = false;
+                    interactables[4].image = "printer_good";
+                    sounds.printer_fixing.play();
+                }
             }
         },
         {
@@ -241,8 +246,11 @@ createInteractables = () => {
             y: 0,
             width: 89,
             height: 173,
+            flickering: false,
             action: function(){
-                interactables[6].image = "lamp_dark";
+                if(interactables[6].flickering){
+                    stopFlickering();
+                }
             }
         }
     ]
@@ -266,8 +274,12 @@ selectEvent = () => {
         case "lamp":
             lampFlicker();
             sounds.lamp_flicker.play();
+            interactables[6].flickering = true;
             removeEvent("lamp");
             break;
+        case "printer":
+            printerJam();
+            removeEvent("printer");
     }
     startEvents();
 }
@@ -284,7 +296,7 @@ startGame = () => { //reInitializing all values so replayability is possible
     codeLocation = SCREEN_TOP;
     scrollY = 0;
     mouseScroll = false;
-    events = ["plant", "spider", "phone", "lamp"];
+    events = ["plant", "spider", "phone", "lamp", "printer"];
     createInteractables();
     startEvents();
 }
@@ -437,6 +449,20 @@ lampFlicker = () => {
     else {
         sounds.lamp_flicker.pause();
         interactables[6].image = "lamp_burnt";
+        interactables[6].flickering = false;
         sounds.lamp_pops.play();
     }
+}
+
+stopFlickering = () => {
+    clearTimeout(lampTimer);
+    interactables[6].image = "lamp_lit";
+    sounds.lamp_flicker.pause();
+    interactables[6].flickering = false;
+}
+
+printerJam = () => {
+    interactables[4].jammed = true;
+    interactables[4].image = "printer_error";
+    sounds.printer_malfunction.play();
 }
