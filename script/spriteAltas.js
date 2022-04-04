@@ -24,6 +24,12 @@ sprites.addImage("spider_death_5", "./assets/images/spider_death_x740_y000_anim_
 sprites.addImage("scroll", "./assets/images/scroll.png");
 sprites.addImage("ghost", "./assets/images/ghost.png");
 
+sprites.addImage("code1", "./assets/images-code/code_DF_001.png");
+sprites.addImage("code2e", "./assets/images-code/code_DE_002.png");
+sprites.addImage("code2", "./assets/images-code/code_DC_002.png");
+sprites.addImage("code3", "./assets/images-code/code_DF_003.png");
+sprites.addImage("code4", "./assets/images-code/code_DF_004.png");
+
 // Temp images
 sprites.addImage("blurb1", "./assets/images/blurb1.png");
 sprites.addImage("blurb2", "./assets/images/blurb2.png");
