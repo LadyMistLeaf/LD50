@@ -6,7 +6,7 @@ let plantImage = "plant_1";
 let mugStatus = "clean";
 let spiderIndex = 0;
 let lampIndex = 0;
-let codeTimeElapsed = 0;
+let timeElapsed = 0;
 let spiderTimeout = null; //This is where the timer will be stored to interrupt the descent on click;
 let plantTimer = null;
 let codeFixTimer = null;
@@ -27,6 +27,7 @@ let mouseLocationY = mouseY;
 
 sounds.typing.loop = true;
 sounds.lamp_flicker.loop = true;
+sounds.phone_typing.loop = true;
 
 drawGame = () => {
     gameCanvas.fillStyle = "#000000";
@@ -61,10 +62,10 @@ drawGame = () => {
 
     gameCanvas.drawImage(sprites[mouseImage], mouseLocationX - CURSOR_OFFSET_X, mouseLocationY - CURSOR_OFFSET_Y);
 
-    if(mouseAction === "debugging"){
-        gameCanvas.fillStyle = "#666666";
+    if(mouseAction === "debugging" || mouseAction === "phone"){
+        gameCanvas.fillStyle = "#393C43";
         gameCanvas.fillRect(mouseLocationX + 34, mouseLocationY + 34, 154, 24);
-        gameCanvas.fillStyle = "#D771B3";
+        gameCanvas.fillStyle = "#8B9E42";
         gameCanvas.fillRect(mouseLocationX + 36, mouseLocationY + 36, 150 * barPercent, 20);
     }
 }
@@ -126,6 +127,10 @@ gameMouseUp = () => {
         sounds.typing.pause();
         mouseAction = null;
     }
+    if(mouseAction === "phone"){
+        sounds.phone_typing.pause();
+        mouseAction = null;
+    }
 }
 
 gameMouseMove = (x, y) => {
@@ -145,6 +150,9 @@ gameMouseMove = (x, y) => {
             return;
         }
         if(mouseAction === "debugging"){
+            return;
+        }
+        if(mouseAction === "phone"){
             return;
         }
     }
@@ -227,9 +235,10 @@ createInteractables = () => {
             height: 86,
             action: function(){
                 if(interactables[3].image === "phone_on" || interactables[3].image === "phone_imminent"){
-                    clearTimeout(phoneTimer);
-                    interactables[3].image = "phone_off";
-                    events.push("phone");
+                    mouseAction = "phone";
+                    timeElapsed = 0;
+                    sounds.phone_typing.play();
+                    phoneAction(1500);
                 }
             }
         },
@@ -427,16 +436,16 @@ fixCode = (piece) => {
     sounds.typing.play();
     mouseAction = "debugging";
     let time = Game.data[piece].time;
-    codeTimeElapsed = 0;
+    timeElapsed = 0;
     barPercent = 0;
     fixingCode(time, piece);
 }
 
 fixingCode = (time, piece) => {
     if(mouseAction === "debugging"){
-        codeTimeElapsed += 17;
-        if(codeTimeElapsed < time){
-            barPercent = codeTimeElapsed / time;
+        timeElapsed += 17;
+        if(timeElapsed < time){
+            barPercent = timeElapsed / time;
             codeFixTimer = setTimeout(() => {
                 fixingCode(time, piece);
             }, FRAME);
@@ -466,6 +475,25 @@ phoneBuzz = () => {
             sounds.phone_broken.play();
             interactables[3].image = "phone_cracked";
             break;
+    }
+}
+
+phoneAction = (time) => {
+    if(mouseAction === "phone"){
+        timeElapsed += 17;
+        if(timeElapsed < time){
+            barPercent = timeElapsed / time;
+            codeFixTimer = setTimeout(() => {
+                phoneAction(time);
+            }, FRAME);
+        }
+        else {
+            clearTimeout(phoneTimer);
+            interactables[3].image = "phone_off";
+            events.push("phone");
+            mouseAction = null;
+            sounds.phone_typing.pause();
+        }
     }
 }
 
