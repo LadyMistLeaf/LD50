@@ -23,6 +23,7 @@ let mouseLocationX = mouseX;
 let mouseLocationY = mouseY;
 
 sounds.typing.loop = true;
+sounds.lamp_flicker.loop = true;
 
 drawGame = () => {
     gameCanvas.fillRect(0, 0, WIDTH, HEIGHT);
@@ -192,7 +193,12 @@ createInteractables = () => {
             width: 72,
             height: 218,
             action: function(){
-                console.log("Door clicked");
+                if(interactables[2].image === "door_closed"){
+                    interactables[2].image = "door_open";
+                }
+                else {
+                    interactables[2].image = "door_closed";
+                }
             }
         },
         {
@@ -259,6 +265,7 @@ selectEvent = () => {
             break;
         case "lamp":
             lampFlicker();
+            sounds.lamp_flicker.play();
             removeEvent("lamp");
             break;
     }
@@ -399,13 +406,16 @@ phoneBuzz = () => {
     switch(interactables[3].image){
         case "phone_off": 
             interactables[3].image = "phone_on";
+            sounds.phone_notification.play();
             phoneTimer = setTimeout(phoneBuzz, 4000);
             break;
         case "phone_on":
             interactables[3].image = "phone_imminent";
+            sounds.phone_urgent.play();
             phoneTimer = setTimeout(phoneBuzz, 4000);
             break;
         case "phone_imminent":
+            sounds.phone_broken.play();
             interactables[3].image = "phone_cracked";
             break;
     }
@@ -425,6 +435,8 @@ lampFlicker = () => {
         }
     }
     else {
+        sounds.lamp_flicker.pause();
         interactables[6].image = "lamp_burnt";
+        sounds.lamp_pops.play();
     }
 }
