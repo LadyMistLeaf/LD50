@@ -23,6 +23,7 @@ let mouseLocationX = mouseX;
 let mouseLocationY = mouseY;
 
 sounds.typing.loop = true;
+sounds.lamp_flicker.loop = true;
 
 drawGame = () => {
     gameCanvas.fillRect(0, 0, WIDTH, HEIGHT);
@@ -192,7 +193,12 @@ createInteractables = () => {
             width: 72,
             height: 218,
             action: function(){
-                console.log("Door clicked");
+                if(interactables[2].image === "door_closed"){
+                    interactables[2].image = "door_open";
+                }
+                else {
+                    interactables[2].image = "door_closed";
+                }
             }
         },
         {
@@ -215,8 +221,13 @@ createInteractables = () => {
             y: 300,
             width: 124,
             height: 73,
+            jammed: false,
             action: function(){
-                console.log("Printer clicked!");
+                if(interactables[4].jammed){
+                    interactables[4].jammed = false;
+                    interactables[4].image = "printer_good";
+                    sounds.printer_fixing.play();
+                }
             }
         },
         {
@@ -235,8 +246,11 @@ createInteractables = () => {
             y: 0,
             width: 89,
             height: 173,
+            flickering: false,
             action: function(){
-                interactables[6].image = "lamp_dark";
+                if(interactables[6].flickering){
+                    stopFlickering();
+                }
             }
         }
     ]
@@ -259,8 +273,13 @@ selectEvent = () => {
             break;
         case "lamp":
             lampFlicker();
+            sounds.lamp_flicker.play();
+            interactables[6].flickering = true;
             removeEvent("lamp");
             break;
+        case "printer":
+            printerJam();
+            removeEvent("printer");
     }
     startEvents();
 }
@@ -277,7 +296,7 @@ startGame = () => { //reInitializing all values so replayability is possible
     codeLocation = SCREEN_TOP;
     scrollY = 0;
     mouseScroll = false;
-    events = ["plant", "spider", "phone", "lamp"];
+    events = ["plant", "spider", "phone", "lamp", "printer"];
     createInteractables();
     startEvents();
 }
@@ -399,13 +418,16 @@ phoneBuzz = () => {
     switch(interactables[3].image){
         case "phone_off": 
             interactables[3].image = "phone_on";
+            sounds.phone_notification.play();
             phoneTimer = setTimeout(phoneBuzz, 4000);
             break;
         case "phone_on":
             interactables[3].image = "phone_imminent";
+            sounds.phone_urgent.play();
             phoneTimer = setTimeout(phoneBuzz, 4000);
             break;
         case "phone_imminent":
+            sounds.phone_broken.play();
             interactables[3].image = "phone_cracked";
             break;
     }
@@ -425,6 +447,22 @@ lampFlicker = () => {
         }
     }
     else {
+        sounds.lamp_flicker.pause();
         interactables[6].image = "lamp_burnt";
+        interactables[6].flickering = false;
+        sounds.lamp_pops.play();
     }
+}
+
+stopFlickering = () => {
+    clearTimeout(lampTimer);
+    interactables[6].image = "lamp_lit";
+    sounds.lamp_flicker.pause();
+    interactables[6].flickering = false;
+}
+
+printerJam = () => {
+    interactables[4].jammed = true;
+    interactables[4].image = "printer_error";
+    sounds.printer_malfunction.play();
 }
