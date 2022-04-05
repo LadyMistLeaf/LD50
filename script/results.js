@@ -24,6 +24,7 @@ drawResults = () => {
     var col_black      = "#000000";
     var col_yellow     = "#fdb069";
     var col_red        = "#8b0340";
+    var col_white      = "#ffffff";
     var col_green      = "#9fd598";
     
     var line_y         = 225;
