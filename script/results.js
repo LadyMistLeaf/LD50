@@ -27,7 +27,7 @@ drawResults = () => {
     var col_green      = "#9fd598";
     
     var line_y         = 225;
-    var line_height    = 22;
+    var line_height    = 25;
     
     var col_1 = 300;
     var col_2 = 550;
@@ -40,6 +40,14 @@ drawResults = () => {
     
     // bugs fixed
     gameCanvas.fillText("Bugs Fixed", col_1, line_y);
+    
+    if (bugs_fixed > (bugs_total * .7))
+      gameCanvas.fillStyle = col_green;
+    else if (bugs_fixed > (bugs_total * .5))
+       gameCanvas.fillStyle = col_yellow;
+    else
+      gameCanvas.fillStyle = col_red;
+    
     gameCanvas.fillText(bugs_fixed + "/" + bugs_total, col_2, line_y);
     gameCanvas.fillText(final_score_bugs, col_3, line_y)
     line_y += line_height
@@ -48,11 +56,13 @@ drawResults = () => {
     gameCanvas.fillStyle = col_black;
     gameCanvas.fillText("Printer", col_1, line_y);
     if(interactables[4].jammed) {
+      gameCanvas.fillStyle = col_green;
       l = "Printing";
       final_score_printer = 16
     }
     else
     {
+      gameCanvas.fillStyle = col_red;
       l = "Jammed";
     }
     gameCanvas.fillText(l, col_2, line_y);
@@ -63,10 +73,12 @@ drawResults = () => {
     gameCanvas.fillStyle = col_black;
     gameCanvas.fillText("Lamp", col_1, line_y);
     if (interactables[6].image === "lamp_lit"){
+      gameCanvas.fillStyle = col_green;
       l = "Illuminated";
       final_score_lamp = 12;
     }
     else {
+      gameCanvas.fillStyle = col_red;
       l = "Blown out";
     }
     gameCanvas.fillText(l, col_2, line_y);
@@ -77,18 +89,22 @@ drawResults = () => {
     gameCanvas.fillStyle = col_black;
     gameCanvas.fillText("Social Media", col_1, line_y);
     if (interactables[3].image === "phone_cracked"){
+      gameCanvas.fillStyle = col_green;
       l = "Destroyed";
     }
     if (interactables[3].image === "phone_imminent") {
       l = "Neglected";
+      gameCanvas.fillStyle = col_yellow;
       final_score_phone = 5;
     }
     if (interactables[3].image === "phone_on"){
       l = "Unpopular";
+      gameCanvas.fillStyle = col_yellow;
       final_score_phone = 15;
     }
-    if (interactables[3].image === "phone_on"){
-      l = "Unpopular";
+    if (interactables[3].image === "phone_off"){
+      l = "Up to date";
+      gameCanvas.fillStyle = col_green;
       final_score_phone = 20;
     }
     gameCanvas.fillText(l, col_2, line_y);
@@ -99,6 +115,7 @@ drawResults = () => {
     gameCanvas.fillStyle = col_black;
     gameCanvas.fillText("Coffee", col_1, line_y);
     if (interactables[1].alive){
+      gameCanvas.fillStyle = col_green;
       l = "delicious";
       final_score_coffee = 10;
     }
@@ -116,6 +133,7 @@ drawResults = () => {
     gameCanvas.fillText("Plant", col_1, line_y);
     if (plantImage === "plant_1"){
       l = "healthy";
+      gameCanvas.fillStyle = col_green;
       final_score_plant = 10;
     }
     if (plantImage === "plant_2"){
@@ -134,7 +152,7 @@ drawResults = () => {
     
     gameCanvas.font = "52px webkomick";
     gameCanvas.textAlign = "center"
-    gameCanvas.fillStyle = col_yellow;
+    gameCanvas.fillStyle = col_white;
     
     line_y += line_height + line_height
     gameCanvas.fillText("Total score: " + score_total, 512, line_y);
