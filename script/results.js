@@ -1,5 +1,5 @@
 goToResults = () => {
-    sounds.music_results.play();
+    sounds.music_result.play();
 }
 
 drawResults = () => {

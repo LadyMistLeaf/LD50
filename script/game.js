@@ -639,6 +639,7 @@ clockTimer = () => {
     if(clockTime > 8){
         clearTimeout(gameTime);
         clearTimeout(eventTime);
+        sounds.music_ingame.pause();
         goToResults();
         Game.state = "results";
     }
