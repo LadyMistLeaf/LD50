@@ -1,0 +1,9 @@
+Goal: Get your code bug free within one workday while also dealing with  distractions.
+
+To fix your code, click and hold on an erroneous line until the bar fills up. Don’t forget to use the scroll bar!
+
+Distractions are inevitable so you should take care of any before things are irreparable.
+
+To deal with distractions, click and hold until they are resolved — momentarily. (Some things need an item to be fixed).
+
+The more bugs you find and the better you keep things in order, the higher your score will be. Good luck!
