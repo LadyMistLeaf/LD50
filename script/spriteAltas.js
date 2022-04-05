@@ -10,6 +10,7 @@ sprites.addImage("main_bg", "./assets/images/main_bg.png");
 sprites.addImage("mouse_hand", "./assets/images/mouse_hand.png");
 sprites.addImage("mouse_pointer", "./assets/images/mouse_pointer.png");
 sprites.addImage("title_screen", "./assets/images/title_screen.png");
+sprites.addImage("how_to_play", "./assets/images/how_to_play.png");
 sprites.addImage("results", "./assets/images/results_screen.png");
 sprites.addImage("results_header", "./assets/images/results_header.png");
 sprites.addImage("start", "./assets/images/button_start_game.png");
@@ -46,6 +47,18 @@ sprites.addImage("lamp_dark", "./assets/images/lamp_dark_x140_y000.png");
 sprites.addImage("lamp_burnt", "./assets/images/lamp_burnedout_x140_y000.png");
 sprites.addImage("scroll", "./assets/images/scroll.png");
 sprites.addImage("ghost", "./assets/images/ghost.png");
+
+sprites.addImage("time0", "./assets/images/timer_hrs_08AM_x315_y024.png");
+sprites.addImage("time1", "./assets/images/timer_hrs_09AM_x315_y024.png");
+sprites.addImage("time2", "./assets/images/timer_hrs_10AM_x315_y024.png");
+sprites.addImage("time3", "./assets/images/timer_hrs_11AM_x315_y024.png");
+sprites.addImage("time4", "./assets/images/timer_hrs_12PM_x315_y024.png");
+sprites.addImage("time5", "./assets/images/timer_hrs_01PM_x315_y024.png");
+sprites.addImage("time6", "./assets/images/timer_hrs_02PM_x315_y024.png");
+sprites.addImage("time7", "./assets/images/timer_hrs_03PM_x315_y024.png");
+sprites.addImage("time8", "./assets/images/timer_hrs_04PM_x315_y024.png");
+sprites.addImage("dots", "./assets/images/timer_dots_x315_y024.png");
+sprites.addImage("mins", "./assets/images/timer_min_00_x315_y024.png");
 
 sprites.addImage("code1", "./assets/images-code/code_DF_001.png");
 sprites.addImage("code2", "./assets/images-code/code_DC_002.png");
