@@ -12,6 +12,7 @@ sprites.addImage("mouse_pointer", "./assets/images/mouse_pointer.png");
 sprites.addImage("title_screen", "./assets/images/title_screen.png");
 sprites.addImage("how_to_play", "./assets/images/how_to_play.png");
 sprites.addImage("results", "./assets/images/results_screen.png");
+sprites.addImage("credits_page", "./assets/images/credits.png");
 sprites.addImage("results_header", "./assets/images/results_header.png");
 sprites.addImage("start", "./assets/images/button_start_game.png");
 sprites.addImage("how_to", "./assets/images/button_how_to_play.png");

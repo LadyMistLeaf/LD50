@@ -25,7 +25,7 @@ menuMouseClick = (xCoord, yCoord) => {
             goToHowTo();
         }
         else if(yCoord >= 420 && yCoord <= 455){
-            // credits
+            Game.state = "credits";
         }
     }
 }

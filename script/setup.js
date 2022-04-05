@@ -35,6 +35,9 @@ const step = () => {
     else if(Game.state === "start"){
         drawStart();
     }
+    else if(Game.state === "credits"){
+        drawCredits();
+    }
 
     requestAnimationFrame(step);
 }
@@ -52,6 +55,8 @@ const mouseClick = (event) => {
         resultsMouseClick(xCoord, yCoord);
     } else if (Game.state === "start"){
         startMouseClick(xCoord, yCoord);
+    }else if (Game.state === "credits"){
+        creditsMouseClick(xCoord, yCoord);
     }
 
 };
