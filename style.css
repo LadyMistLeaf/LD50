@@ -15,3 +15,8 @@ canvas {
     background-color: white;
     cursor: none;
 }
+
+@font-face{
+    font-family: 'webkomick';
+    src:local('./webkomick-v08.ttf') format('truetype');
+}

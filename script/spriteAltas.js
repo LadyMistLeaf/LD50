@@ -5,6 +5,7 @@ sprites.addImage = (imageName, imageSrc) => {
     sprites[imageName].src = imageSrc;
 }
 
+sprites.addImage("pixeleaf", "./assets/images/pixeleaf_plate.png");
 sprites.addImage("main_bg", "./assets/images/main_bg.png");
 sprites.addImage("mouse_hand", "./assets/images/mouse_hand.png");
 sprites.addImage("mouse_pointer", "./assets/images/mouse_pointer.png");
@@ -15,6 +16,8 @@ sprites.addImage("start", "./assets/images/button_start_game.png");
 sprites.addImage("how_to", "./assets/images/button_how_to_play.png");
 sprites.addImage("credits", "./assets/images/button_credits.png");
 sprites.addImage("back", "./assets/images/button_back.png");
+sprites.addImage("mouse_bulb", "./assets/images/mouse_bulb.png");
+sprites.addImage("mouse_paper", "./assets/images/mouse_paper.png");
 sprites.addImage("plant_1", "./assets/images/plant-1.png");
 sprites.addImage("plant_2", "./assets/images/plant-2.png");
 sprites.addImage("plant_3", "./assets/images/plant-3.png");

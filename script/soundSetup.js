@@ -29,4 +29,5 @@ sounds.addSound('lamp_flicker', './assets/sfx/lamp_flicker_loop.ogg', './assets/
 sounds.addSound('lamp_pops', './assets/sfx/lamp_pops.ogg', './assets/sfx/lamp_pops.mp3');
 sounds.addSound('printer_fixing', './assets/sfx/printer_fixing.ogg', './assets/sfx/printer_fixing.mp3');
 sounds.addSound('printer_malfunction', './assets/sfx/printer_malfunction.ogg', './assets/sfx/printer_malfunction.mp3');
+sounds.addSound('bulb_screwing_in', './assets/sfx/bulb_screwing_in.ogg', './assets/sfx/bulb_screwing_in.mp3');
 
