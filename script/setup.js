@@ -10,8 +10,9 @@ gameCanvas.font = "20px Arial";
 let mouseImage = "mouse_pointer";
 
 handleMouseMove = (event) => {
-    mouseX = event.clientX - event.path[0].offsetLeft;
-    mouseY = event.clientY - event.path[0].offsetTop;
+    let rect = gameCanvas.canvas.getBoundingClientRect();
+    mouseX = event.clientX - rect.left;
+    mouseY = event.clientY - rect.top;
     if(Game.state === "game"){
         gameMouseMove(mouseX, mouseY);
     }
