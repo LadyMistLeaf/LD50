@@ -13,6 +13,10 @@ let codeFixTimer = null;
 let phoneTimer = null;
 let lampTimer = null;
 let codeBugs = 27;
+let clockDisplay = "time0";
+let clockTime = 0;
+let gameTime = null;
+let eventTime = null;
 
 let barPercent = 0;
 
@@ -64,12 +68,16 @@ drawGame = () => {
 
     gameCanvas.drawImage(sprites[mouseImage], mouseLocationX - CURSOR_OFFSET_X, mouseLocationY - CURSOR_OFFSET_Y);
 
-    if(mouseAction === "debugging" || mouseAction === "phone"){
+    if(mouseAction === "debugging" || mouseAction === "phone" || mouseAction === "printerFix" || mouseAction === "bulbFix"){
         gameCanvas.fillStyle = "#393C43";
         gameCanvas.fillRect(mouseLocationX + 34, mouseLocationY + 34, 154, 24);
         gameCanvas.fillStyle = "#8B9E42";
         gameCanvas.fillRect(mouseLocationX + 36, mouseLocationY + 36, 150 * barPercent, 20);
     }
+
+    gameCanvas.drawImage(sprites.dots, 315, 024);
+    gameCanvas.drawImage(sprites.mins, 315, 024);
+    gameCanvas.drawImage(sprites[clockDisplay], 315, 024);
 }
 
 gameMouseClick = (xCoord, yCoord) => {
@@ -270,8 +278,6 @@ createInteractables = () => {
             action: function(){
                 if(interactables[4].jammed){
                     if(mouseAction === "paper"){
-                        interactables[4].jammed = false;
-                        interactables[4].image = "printer_good";
                         mouseAction = "printerFix";
                         timeElapsed = 0;
                         sounds.printer_fixing.play();
@@ -353,7 +359,7 @@ selectEvent = () => {
 
 startEvents = () => {
     let rand = (Math.random() * 5000) + 10000; // 10 to 15 secs in milliseconds
-    setTimeout(selectEvent, rand);
+    eventTime = setTimeout(selectEvent, rand);
 }
 
 startGame = () => { //reInitializing all values so replayability is possible
@@ -376,10 +382,13 @@ startGame = () => { //reInitializing all values so replayability is possible
     lampTimer = null;
     codeBugs = 27;
     mouseScroll = false;
+    clockDisplay = "time0";
+    clockTime = 0;
     events = ["plant", "spider", "phone", "lamp", "printer"];
     sounds.music_ingame.play();
     createInteractables();
     startEvents();
+    gameTime = setInterval(clockTimer, 16666);
 }
 
 spiderDeath = () => {
@@ -578,8 +587,6 @@ lampFlicker = () => {
 
 stopFlickering = () => {
     clearTimeout(lampTimer);
-    mouseAction = null;
-    mouseImage = "mouse_pointer";
     interactables[6].image = "lamp_lit";
     sounds.lamp_flicker.pause();
     interactables[6].flickering = false;
@@ -604,6 +611,8 @@ printerAction = (time) => {
             events.push("printer");
             mouseAction = null;
             mouseImage = "mouse_pointer";
+            interactables[4].image = "printer_good";
+            interactables[4].jammed = false;
         }
     }
 }
@@ -618,8 +627,22 @@ lampAction = (time) => {
             }, FRAME);
         }
         else {
+            stopFlickering();
             mouseAction = null;
             mouseImage = "mouse_pointer";
         }
+    }
+}
+
+clockTimer = () => {
+    clockTime++;
+    if(clockTime > 8){
+        clearTimeout(gameTime);
+        clearTimeout(eventTime);
+        goToResults();
+        Game.state = "results";
+    }
+    else {
+        clockDisplay = "time" + clockTime;
     }
 }
