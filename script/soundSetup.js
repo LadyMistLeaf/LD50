@@ -30,4 +30,7 @@ sounds.addSound('lamp_pops', './assets/sfx/lamp_pops.ogg', './assets/sfx/lamp_po
 sounds.addSound('printer_fixing', './assets/sfx/printer_fixing.ogg', './assets/sfx/printer_fixing.mp3');
 sounds.addSound('printer_malfunction', './assets/sfx/printer_malfunction.ogg', './assets/sfx/printer_malfunction.mp3');
 sounds.addSound('bulb_screwing_in', './assets/sfx/bulb_screwing_in.ogg', './assets/sfx/bulb_screwing_in.mp3');
+sounds.addSound('spider_down', './assets/sfx/spider_down.ogg', './assets/sfx/spider_down.mp3');
+sounds.addSound('spider_shoo', './assets/sfx/spider_shoo.ogg', './assets/sfx/spider_shoo.mp3');
+sounds.addSound('spider_death', './assets/sfx/spider_death.ogg','./assets/sfx/spider_death.mp3');
 

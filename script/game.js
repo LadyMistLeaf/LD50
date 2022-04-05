@@ -34,6 +34,7 @@ sounds.typing.loop = true;
 sounds.lamp_flicker.loop = true;
 sounds.phone_typing.loop = true;
 sounds.music_ingame.loop = true;
+sounds.music_ingame.volume = 0.5;
 
 drawGame = () => {
     gameCanvas.fillStyle = "#000000";
@@ -232,6 +233,7 @@ createInteractables = () => {
                 if(mouseAction === null){
                     if(mugStatus === "clean"){
                         clearTimeout(spiderTimer);
+                        sounds.spider_shoo.play();
                         spiderUp();
                         events.push("spider");
                     }
@@ -415,6 +417,7 @@ spiderMoveDown = () => {
             setTimeout(() => {
                 interactables[1].alive = false;
                 interactables[1].y = -500;
+                sounds.spider_death.play();
                 spiderDeath();
             }, 200);
         }
@@ -434,7 +437,10 @@ spiderTwitch = () => {
     }
     else {
         spiderIndex = 0;
-        spiderTimer = setTimeout(spiderMoveDown, 500);
+        spiderTimer = setTimeout(() => {
+            spiderMoveDown();
+            sounds.spider_down.play();
+        }, 500);
     }
 }
 
