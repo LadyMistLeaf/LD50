@@ -6,6 +6,12 @@ drawResults = () => {
     gameCanvas.drawImage(sprites.results, 0, 0);
     gameCanvas.drawImage(sprites.results_header, 287, 75);
     gameCanvas.drawImage(sprites.back, 50, 520);
+
+    gameCanvas.fillStyle = "#FFFFFF";
+    gameCanvas.font = "26px webkomick";
+
+    gameCanvas.fillText("Level up!", 550, 530);
+
     gameCanvas.drawImage(sprites[mouseImage], mouseX - CURSOR_OFFSET_X, mouseY - CURSOR_OFFSET_Y);
 }
 

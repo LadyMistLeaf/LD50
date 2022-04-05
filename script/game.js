@@ -133,6 +133,16 @@ gameMouseUp = () => {
         sounds.phone_typing.pause();
         mouseAction = null;
     }
+    if(mouseAction === "printerFix"){
+        sounds.printer_fixing.pause();
+        sounds.printer_fixing.currentTime = 0;
+        mouseAction = null;
+    }
+    if(mouseAction === "bulbFix"){
+        sounds.bulb_screwing_in.pause();
+        sounds.bulb_screwing_in.currentTime = 0;
+        mouseAction = null;
+    }
 }
 
 gameMouseMove = (x, y) => {
@@ -155,6 +165,12 @@ gameMouseMove = (x, y) => {
             return;
         }
         if(mouseAction === "phone"){
+            return;
+        }
+        if(mouseAction === "printerFix"){
+            return;
+        }
+        if(mouseAction === "bulbFix"){
             return;
         }
     }
@@ -253,10 +269,14 @@ createInteractables = () => {
             jammed: false,
             action: function(){
                 if(interactables[4].jammed){
-                    interactables[4].jammed = false;
-                    interactables[4].image = "printer_good";
-                    sounds.printer_fixing.play();
-                    events.push("printer");
+                    if(mouseAction === "paper"){
+                        interactables[4].jammed = false;
+                        interactables[4].image = "printer_good";
+                        mouseAction = "printerFix";
+                        timeElapsed = 0;
+                        sounds.printer_fixing.play();
+                        printerAction(6000);
+                    }
                 }
             }
         },
@@ -267,7 +287,19 @@ createInteractables = () => {
             width: 160,
             height: 135,
             action: function(){
-                interactables[5].image = "cupboard_open";
+                if(this.image === "cupboard_closed"){
+                    this.image = "cupboard_open";
+                }
+                else if(mouseAction === null){
+                    if(interactables[4].jammed){
+                        mouseImage = "mouse_paper";
+                        mouseAction = "paper";
+                    }
+                    else if(interactables[6].flickering){
+                        mouseImage = "mouse_bulb";
+                        mouseAction = "bulb";
+                    }
+                }
             }
         },
         {
@@ -279,7 +311,12 @@ createInteractables = () => {
             flickering: false,
             action: function(){
                 if(interactables[6].flickering){
-                    stopFlickering();
+                    if(mouseAction === "bulb"){
+                        mouseAction = "bulbFix";
+                        timeElapsed = 0;
+                        lampAction(3000);
+                        sounds.bulb_screwing_in.play();
+                    }
                 }
             }
         }
@@ -529,6 +566,10 @@ lampFlicker = () => {
     }
     else {
         sounds.lamp_flicker.pause();
+        if(mouseAction === "bulb" || mouseAction === "bulbFix"){
+            mouseAction = null;
+            mouseImage = "mouse_pointer";
+        }
         interactables[6].image = "lamp_burnt";
         interactables[6].flickering = false;
         sounds.lamp_pops.play();
@@ -537,6 +578,8 @@ lampFlicker = () => {
 
 stopFlickering = () => {
     clearTimeout(lampTimer);
+    mouseAction = null;
+    mouseImage = "mouse_pointer";
     interactables[6].image = "lamp_lit";
     sounds.lamp_flicker.pause();
     interactables[6].flickering = false;
@@ -546,4 +589,37 @@ printerJam = () => {
     interactables[4].jammed = true;
     interactables[4].image = "printer_error";
     sounds.printer_malfunction.play();
+}
+
+printerAction = (time) => {
+    if(mouseAction === "printerFix"){
+        timeElapsed += 17;
+        if(timeElapsed < time){
+            barPercent = timeElapsed / time;
+            codeFixTimer = setTimeout(() => {
+                printerAction(time);
+            }, FRAME);
+        }
+        else {
+            events.push("printer");
+            mouseAction = null;
+            mouseImage = "mouse_pointer";
+        }
+    }
+}
+
+lampAction = (time) => {
+    if(mouseAction === "bulbFix"){
+        timeElapsed += 17;
+        if(timeElapsed < time){
+            barPercent = timeElapsed / time;
+            codeFixTimer = setTimeout(() => {
+                lampAction(time);
+            }, FRAME);
+        }
+        else {
+            mouseAction = null;
+            mouseImage = "mouse_pointer";
+        }
+    }
 }

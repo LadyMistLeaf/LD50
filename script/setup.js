@@ -3,7 +3,7 @@ gameCanvas.canvas.height = HEIGHT;
 
 Game = {};
 
-Game.state = "menu";
+Game.state = "start";
 
 gameCanvas.font = "20px Arial";
 
@@ -32,6 +32,9 @@ const step = () => {
     else if(Game.state === "results"){
         drawResults();
     }
+    else if(Game.state === "start"){
+        drawStart();
+    }
 
     requestAnimationFrame(step);
 }
@@ -45,8 +48,10 @@ const mouseClick = (event) => {
         gameMouseClick(xCoord, yCoord);
     } else if (Game.state === "howTo"){
         howToMouseClick(xCoord, yCoord);
-    } else if (Game.state == "results"){
+    } else if (Game.state === "results"){
         resultsMouseClick(xCoord, yCoord);
+    } else if (Game.state === "start"){
+        startMouseClick(xCoord, yCoord);
     }
 
 };
@@ -62,5 +67,3 @@ gameCanvas.canvas.addEventListener('mousedown', mouseClick);
 gameCanvas.canvas.addEventListener('mouseup', mouseUp);
 
 requestAnimationFrame(step);
-
-goToMenu();
